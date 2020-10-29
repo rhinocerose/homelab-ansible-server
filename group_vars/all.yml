@@ -82,7 +82,6 @@ bookstack:
   database_root_password: "{{ mysql_root_password }}"
   database_name: bookstackapp
   database_user: bookstack
-  # database_host: "{{ bookstack.database_container }}"
   database_host: bookstack_db
   root_password: "{{ mysql_root_password }}"
 
