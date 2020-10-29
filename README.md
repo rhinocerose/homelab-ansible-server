@@ -1,3 +1,21 @@
+# Includions & Todos
+
+- [x] User config
+  - [x] Set user groups and permissions
+  - [x] Delete root accesss
+  - [x] NTP
+  - [x] SSH-hardening
+- [x] Docker
+  - [x] Python dependencies
+  - [x] Docker and docker-compose
+- [ ] Monitoring
+  - [x] Heimdall
+  - [x] Portainer
+  - [ ] Prometheus
+  - [ ] Grafana
+- [ ] Knowledge Management Systems
+  - [x] Bookstack
+
 # ansible-template
 A template structure for Ansible projects, adhering to [best practices](http://docs.ansible.com/ansible/latest/playbooks_best_practices.html#directory-layout)
 
