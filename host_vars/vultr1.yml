@@ -6,4 +6,4 @@ user:
   shell: /bin/bash
   uid: 1001
   gid: 1001
-  pass_hash: '$6$vultr.arch$a41beHtZ6/9A0eHjfII3VyArafuiGSFxXYas.LOR6dehb44EW6V0d.HxwHB5oiMTwXj.I3oE3cB/D8F1QvZFt1'
+  pass_hash: '$6$vultrdocker$oHGkUFY6JVskmD7EJXJELmvUqaS59W/pRhmllRlYSQCUH2VP80JcY.HNwJofKLxtSMEhxhiabR6Qyh7q4XZXM.'

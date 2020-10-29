@@ -1,11 +1,11 @@
 ---
 
-# - hosts: vultr1
-#   user: root
-#   roles:
-#     - rhinocerose.userconfig
-#     - dev-sec.ssh-hardening
-#     - geerlingguy.ntp
+- hosts: vultr1
+  user: root
+  roles:
+    - rhinocerose.userconfig
+    - dev-sec.ssh-hardening
+    - geerlingguy.ntp
 
 - hosts: vultr1
   user: arch
