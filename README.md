@@ -1,4 +1,4 @@
-# Includions & Todos
+# Inclusions & Todos
 
 - [x] User config
   - [x] Set user groups and permissions
