@@ -8,8 +8,8 @@
     group: "{{ user.name }}"
     mode: 0755
   with_items:
-    - "{{ docker_app_data }}/{{ bookstack.container_name }}"
-    - "{{ docker_app_data }}/{{ bookstack.container_name }}/mysql"
+    - "{{ bookstack.config_directory }}"
+    - "{{ bookstack.database_config_directory }}"
 
 - name: mariadb Docker Container
   docker_container:
@@ -17,7 +17,7 @@
     image: "{{ mariadb.container_store }}/{{ mariadb.container_name }}:{{ mariadb.version }}"
     pull: true
     volumes:
-      - "{{ docker_app_data }}/{{ bookstack.container_name }}/mysql/config:/config"
+      - "{{ bookstack.database_config_directory }}/config:/config"
     ports:
       - "{{ mariadb.port }}:3306/tcp"
     env:
@@ -38,7 +38,7 @@
     links:
       - "{{ bookstack.database_container }}:db"
     volumes:
-      - "{{ docker_app_data }}/{{ bookstack.container_name }}:/config"
+      - "{{ bookstack.config_directory }}:/config"
     ports:
       - "{{ bookstack.port_http }}:80/tcp"
     env:
