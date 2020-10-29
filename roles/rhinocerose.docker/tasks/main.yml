@@ -4,3 +4,4 @@
 - include_tasks: portainer.yml
 - include_tasks: heimdall.yml
 - include_tasks: bookstack.yml
+- include_tasks: plex.yml
