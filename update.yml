@@ -1,0 +1,9 @@
+---
+
+- hosts: vultr1
+  user: arch
+  become: yes
+  roles:
+    - geerlingguy.docker
+    - rhinocerose.base-packages
+    - rhinocerose.docker
