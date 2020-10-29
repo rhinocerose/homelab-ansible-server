@@ -15,6 +15,10 @@
   - [ ] Grafana
 - [ ] Knowledge Management Systems
   - [x] Bookstack
+  - [ ] OpenEats
+- [ ] Media
+  - [ ] Plex
+  - [ ] Jellyfin
 
 # ansible-template
 A template structure for Ansible projects, adhering to [best practices](http://docs.ansible.com/ansible/latest/playbooks_best_practices.html#directory-layout)
