@@ -7,7 +7,7 @@
     group: "{{ user.name }}"
     mode: 0755
   with_items:
-    - "{{ docker_app_data }}/{{ portainer.container_name }}"
+    - "{{ portainer.config_directory }}"
 
 - name: portainer Docker Container
   docker_container:
@@ -15,7 +15,7 @@
     image: "{{ portainer.container_store }}/{{ portainer.container_name }}:{{ portainer.version }}"
     pull: true
     volumes:
-      - "{{ docker_app_data }}/{{ portainer.container_name }}:/config"
+      - "{{ portainer.config_directory }}:/config"
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "{{ portainer.port }}:9000"

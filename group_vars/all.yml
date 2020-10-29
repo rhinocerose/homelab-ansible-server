@@ -50,6 +50,7 @@ media:
 heimdall:
   container_name: heimdall
   container_store: linuxserver
+  config_directory: "{{ docker_app_data }}/heimdall"
   version: latest
   port_http: 9050
   port_https: 9052
@@ -69,6 +70,7 @@ nextcloud:
 mariadb:
   container_name: mariadb
   container_store: linuxserver
+  config_directory: "{{ docker_app_data }}/mariadb"
   version: latest
   port: 3306
   root_password: "{{ mysql_root_password }}"
@@ -76,9 +78,11 @@ mariadb:
 bookstack:
   container_name: bookstack
   container_store: linuxserver
+  config_directory: "{{ docker_app_data }}/bookstack"
   version: latest
   port_http: 6875
   database_container: bookstack_db
+  database_config_directory: "{{ docker_app_data }}/{{ bookstack.container_name }}/mysql"
   database_root_password: "{{ mysql_root_password }}"
   database_name: bookstackapp
   database_user: bookstack
@@ -88,12 +92,14 @@ bookstack:
 portainer:
   container_name: portainer
   container_store: portainer
+  config_directory: "{{ docker_app_data }}/portainer"
   version: latest
   port: 9000
 
 plex:
   container_name: plex
   container_store: linuxserver
+  config_directory: "{{ docker_app_data }}/plex"
   version: latest
 
 base:

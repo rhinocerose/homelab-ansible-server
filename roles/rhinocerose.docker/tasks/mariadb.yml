@@ -8,7 +8,7 @@
     group: "{{ user.name }}"
     mode: 0755
   with_items:
-    - "{{ docker_app_data }}/{{ mariadb.container_name }}"
+    - "{{ mariadb.config_directory }}"
 
 - name: mariadb Docker Container
   docker_container:
@@ -16,7 +16,7 @@
     image: "{{ mariadb.container_store }}/{{ mariadb.container_name }}:{{ mariadb.version }}"
     pull: true
     volumes:
-      - "{{ docker_app_data }}/{{ mariadb.container_name }}:/config"
+      - "{{ mariadb.config_directory }}:/config"
     ports:
       - "{{ mariadb.port }}:3306/tcp"
     env:
