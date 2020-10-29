@@ -76,9 +76,11 @@ mariadb:
 bookstack:
   container_name: bookstack
   container_store: linuxserver
+  config_directory: "{{ docker_app_data }}/bookstack"
   version: latest
   port_http: 6875
   database_container: bookstack_db
+  database_config_directory: "{{ docker_app_data }}/{{ bookstack.container_name }}/mysql"
   database_root_password: "{{ mysql_root_password }}"
   database_name: bookstackapp
   database_user: bookstack
