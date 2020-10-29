@@ -1,0 +1,122 @@
+---
+
+user:
+  name: arch
+  group: arch
+  shell: /bin/bash
+  uid: 1000
+  gid: 1000
+  pass_hash: '$6$vultr.arch$a41beHtZ6/9A0eHjfII3VyArafuiGSFxXYas.LOR6dehb44EW6V0d.HxwHB5oiMTwXj.I3oE3cB/D8F1QvZFt1'
+
+system:
+  timezone: America/Toronto
+  locale: en_US.UTF-8
+
+docker_app_data: /docker
+
+ssh_setting:
+  port: 22
+  password_authentication: "no"
+  root_login: "no"
+  challenge_response_authentication: "no"
+
+# mysql_root_password: "{{ vault_mysql_root_password }}"
+mysql_root_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          64373533373961643363653535316263396135356361386366326433656537663031316161323766
+          6461326364613138396633306662623439616434343261390a663664396166343233366364376531
+          34393333313332326331636430353839616130613931323962626464636434356462396338643765
+          3361663533646562610a383863666238643866633765353865343162666534626266626539326234
+          3161
+mysql_user: ${mysql_user}
+mysql_database: ${mysql_database}
+# mysql_password: "{{ vault_mysql_password }}"
+mysql_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          64373533373961643363653535316263396135356361386366326433656537663031316161323766
+          6461326364613138396633306662623439616434343261390a663664396166343233366364376531
+          34393333313332326331636430353839616130613931323962626464636434356462396338643765
+          3361663533646562610a383863666238643866633765353865343162666534626266626539326234
+          3161
+
+samba_shares_root: /mnt/
+
+media:
+  downloads: "{{ samba_shares_root }}/downloads"
+  movies: "{{ samba_shares_root }}/movies"
+  tv: "{{ samba_shares_root }}/tv/tv"
+  torrents: "{{ samba_shares_root }}/torrents"
+
+heimdall:
+  container_name: heimdall
+  container_store: linuxserver
+  version: latest
+  port_http: 9050
+  port_https: 9052
+
+dillinger:
+  container_name: dillinger
+  container_store: linuxserver
+  version: latest
+  port: 9902
+
+nextcloud:
+  container_name: nextcloud
+  container_store: linuxserver
+  version: latest
+  port: 9983
+
+mariadb:
+  container_name: mariadb
+  container_store: linuxserver
+  version: latest
+  port: 3306
+  root_password: "{{ mysql_root_password }}"
+
+bookstack:
+  container_name: bookstack
+  container_store: linuxserver
+  version: latest
+  port_http: 6875
+  database_container: bookstack_db
+  database_root_password: "{{ mysql_root_password }}"
+  database_name: bookstackapp
+  database_user: bookstack
+  # database_host: "{{ bookstack.database_container }}"
+  database_host: bookstack_db
+  root_password: "{{ mysql_root_password }}"
+
+portainer:
+  container_name: portainer
+  container_store: portainer
+  version: latest
+  port: 9000
+
+plex:
+  container_name: plex
+  container_store: linuxserver
+  version: latest
+
+base:
+  packages:
+    - git
+    - curl
+    - aria2
+    - bash-completion
+    - htop
+    - unzip
+    - zip
+    - tree
+    - tmux
+    - man-db
+    - coreutils
+    - python3
+    - python3-pip
+
+server:
+  packages:
+  fonts:
+
+workstation:
+  packages:
+  fonts:

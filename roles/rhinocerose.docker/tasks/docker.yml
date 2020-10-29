@@ -1,0 +1,26 @@
+---
+
+- name: Install docker network resources
+  pip:
+    name:
+      - docker
+      - docker-compose
+    executable: pip3
+
+- name: Create docker directory
+  file:
+    path: "{{ docker_app_data }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
+    mode: 0755
+
+- name: add user account to docker group
+  user:
+    name: "{{ user.name }}"
+    groups: docker
+    append: yes
+
+- name: Create docker network
+  docker_network:
+    name: "{{ user.name }}"

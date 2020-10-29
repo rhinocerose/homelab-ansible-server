@@ -1,0 +1,28 @@
+---
+
+- name: Create heimdall directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0755
+  with_items:
+    - "{{ docker_app_data }}/{{ heimdall.container_name }}"
+
+- name: heimdall Docker Container
+  docker_container:
+    name: "{{ heimdall.container_name }}"
+    image: "{{ heimdall.container_store }}/{{ heimdall.container_name }}:{{ heimdall.version }}"
+    pull: true
+    volumes:
+      - "{{ docker_app_data }}/{{ heimdall.container_name }}:/config"
+      - "{{ docker_app_data }}/shared:/shared"
+    ports:
+      - "{{ heimdall.port_http }}:80/tcp"
+      - "{{ heimdall.port_https }}:443/tcp"
+    env:
+      TZ: "{{ system.timezone }}"
+      PUID: "{{ user.uid | string }}"
+      PGID: "{{ user.gid | string }}"
+    restart_policy: unless-stopped

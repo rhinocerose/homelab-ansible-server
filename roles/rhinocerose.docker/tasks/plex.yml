@@ -1,0 +1,34 @@
+---
+
+- name: Create plex directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0755
+  with_items:
+    - "{{ docker_app_data }}/{{ plex.container_name }}"
+
+- name: plex Docker Container
+  docker_container:
+    name: "{{ plex.container_name }}"
+    image: "{{ plex.container_store }}/{{ plex.container_name }}:{{ plex.version }}"
+    pull: true
+    volumes:
+      - "{{ docker_app_data }}/{{ plex.container_name }}/library:/config"
+      - "{{ docker_app_data }}/{{ plex.container_name }}/transcode:/transcode"
+      - "{{ media.tv }}:/data/tv"
+      - "{{ media.movies }}:/data/movies"
+    ports:
+      - "32400:32400"
+      - "32400:32400/udp"
+      - "32469:32469"
+      - "32469:32469/udp"
+      - "5353:5353/udp"
+      - "1900:1900/udp"
+    env:
+      TZ: "{{ system.timezone }}"
+      PUID: "{{ user.uid | string }}"
+      PGID: "{{ user.gid | string }}"
+    restart_policy: unless-stopped

@@ -1,0 +1,25 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/86bdb84c/
+Group_Vars	README.md	/^### Group_Vars$/;"	S	section:ansible-template""How to Use
+Host_Vars	README.md	/^### Host_Vars$/;"	S	section:ansible-template""How to Use
+How to Use	README.md	/^## How to Use$/;"	s	chapter:ansible-template
+Inventory	README.md	/^### Inventory$/;"	S	section:ansible-template""How to Use
+Library	README.md	/^### Library$/;"	S	section:ansible-template""How to Use
+Roles	README.md	/^### Roles$/;"	S	section:ansible-template""How to Use
+Roles/Role/Defaults	README.md	/^#### Roles\/Role\/Defaults$/;"	t	subsection:ansible-template""How to Use""Roles
+Roles/Role/Files	README.md	/^#### Roles\/Role\/Files$/;"	t	subsection:ansible-template""How to Use""Roles
+Roles/Role/Handlers	README.md	/^#### Roles\/Role\/Handlers$/;"	t	subsection:ansible-template""How to Use""Roles
+Roles/Role/Library	README.md	/^#### Roles\/Role\/Library$/;"	t	subsection:ansible-template""How to Use""Roles
+Roles/Role/Meta	README.md	/^#### Roles\/Role\/Meta$/;"	t	subsection:ansible-template""How to Use""Roles
+Roles/Role/Tasks	README.md	/^#### Roles\/Role\/Tasks$/;"	t	subsection:ansible-template""How to Use""Roles
+Roles/Role/Templates	README.md	/^#### Roles\/Role\/Templates$/;"	t	subsection:ansible-template""How to Use""Roles
+Roles/Role/Vars	README.md	/^#### Roles\/Role\/Vars$/;"	t	subsection:ansible-template""How to Use""Roles
+Summary	README.md	/^### Summary$/;"	S	section:ansible-template""How to Use
+ansible-template	README.md	/^# ansible-template$/;"	c

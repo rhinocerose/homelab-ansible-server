@@ -1,0 +1,26 @@
+---
+- name: Create portainer directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0755
+  with_items:
+    - "{{ docker_app_data }}/{{ portainer.container_name }}"
+
+- name: portainer Docker Container
+  docker_container:
+    name: "{{ portainer.container_name }}"
+    image: "{{ portainer.container_store }}/{{ portainer.container_name }}:{{ portainer.version }}"
+    pull: true
+    volumes:
+      - "{{ docker_app_data }}/{{ portainer.container_name }}:/config"
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "{{ portainer.port }}:9000"
+    env:
+      TZ: "{{ system.timezone }}"
+      PUID: "{{ user.uid | string }}"
+      PGID: "{{ user.gid | string }}"
+    restart_policy: unless-stopped

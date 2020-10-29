@@ -1,0 +1,52 @@
+---
+
+- name: Create bookstack directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0755
+  with_items:
+    - "{{ docker_app_data }}/{{ bookstack.container_name }}"
+    - "{{ docker_app_data }}/{{ bookstack.container_name }}/mysql"
+
+- name: mariadb Docker Container
+  docker_container:
+    name: "{{ bookstack.database_container }}"
+    image: "{{ mariadb.container_store }}/{{ mariadb.container_name }}:{{ mariadb.version }}"
+    pull: true
+    volumes:
+      - "{{ docker_app_data }}/{{ bookstack.container_name }}/mysql/config:/config"
+    ports:
+      - "{{ mariadb.port }}:3306/tcp"
+    env:
+      TZ: "{{ system.timezone }}"
+      PUID: "{{ user.uid | string }}"
+      PGID: "{{ user.gid | string }}"
+      MYSQL_USER: "{{ bookstack.database_user }}"
+      MYSQL_PASSWORD: "{{ bookstack.database_root_password }}"
+      MYSQL_DATABASE: "{{ bookstack.database_name }}"
+      MYSQL_ROOT_PASSWORD: "{{ mariadb.root_password }}"
+      restart_policy: unless-stopped
+
+- name: bookstack Docker Container
+  docker_container:
+    name: "{{ bookstack.container_name }}"
+    image: "{{ bookstack.container_store }}/{{ bookstack.container_name }}:{{ bookstack.version }}"
+    pull: true
+    links:
+      - "{{ bookstack.database_container }}:db"
+    volumes:
+      - "{{ docker_app_data }}/{{ bookstack.container_name }}:/config"
+    ports:
+      - "{{ bookstack.port_http }}:80/tcp"
+    env:
+      TZ: "{{ system.timezone }}"
+      PUID: "{{ user.uid | string }}"
+      PGID: "{{ user.gid | string }}"
+      DB_HOST: "db:{{ mariadb.port }}"
+      DB_USER: "{{ bookstack.database_user }}"
+      DB_PASS: "{{ bookstack.database_root_password }}"
+      DB_DATABASE: "{{ bookstack.database_name }}"
+    restart_policy: unless-stopped
