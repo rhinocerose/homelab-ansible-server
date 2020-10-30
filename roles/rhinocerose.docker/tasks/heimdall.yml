@@ -4,25 +4,25 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
     mode: 0755
   with_items:
-    - "{{ heimdall.config_directory }}"
+    - "{{ heimdall_config_directory }}"
 
 - name: heimdall Docker Container
   docker_container:
-    name: "{{ heimdall.container_name }}"
-    image: "{{ heimdall.container_store }}/{{ heimdall.container_name }}:{{ heimdall.version }}"
+    name: "{{ heimdall_container_name }}"
+    image: "{{ heimdall_container_store }}/{{ heimdall_container_name }}:{{ heimdall_version }}"
     pull: true
     volumes:
-      - "{{ heimdall.config_directory }}:/config"
+      - "{{ heimdall_config_directory }}:/config"
       - "{{ docker_app_data }}/shared:/shared"
     ports:
-      - "{{ heimdall.port_http }}:80/tcp"
-      - "{{ heimdall.port_https }}:443/tcp"
+      - "{{ heimdall_port_http }}:80/tcp"
+      - "{{ heimdall_port_https }}:443/tcp"
     env:
       TZ: "{{ system.timezone }}"
-      PUID: "{{ user.uid | string }}"
-      PGID: "{{ user.gid | string }}"
+      PUID: "{{ user_uid | string }}"
+      PGID: "{{ user_gid | string }}"
     restart_policy: unless-stopped

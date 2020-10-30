@@ -11,16 +11,16 @@
   file:
     path: "{{ docker_app_data }}"
     state: directory
-    owner: "{{ user.name }}"
-    group: "{{ user.group }}"
+    owner: "{{ user_name }}"
+    group: "{{ user_group }}"
     mode: 0755
 
 - name: add user account to docker group
   user:
-    name: "{{ user.name }}"
+    name: "{{ user_name }}"
     groups: docker
     append: yes
 
 - name: Create docker network
   docker_network:
-    name: "{{ user.name }}"
+    name: "{{ user_name }}"

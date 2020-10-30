@@ -4,24 +4,24 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
     mode: 0755
   with_items:
-    - "{{ mariadb.config_directory }}"
+    - "{{ mariadb_config_directory }}"
 
 - name: mariadb Docker Container
   docker_container:
-    name: "{{ mariadb.container_name }}"
-    image: "{{ mariadb.container_store }}/{{ mariadb.container_name }}:{{ mariadb.version }}"
+    name: "{{ mariadb_container_name }}"
+    image: "{{ mariadb_container_store }}/{{ mariadb_container_name }}:{{ mariadb_version }}"
     pull: true
     volumes:
-      - "{{ mariadb.config_directory }}:/config"
+      - "{{ mariadb_config_directory }}:/config"
     ports:
-      - "{{ mariadb.port }}:3306/tcp"
+      - "{{ mariadb_port }}:3306/tcp"
     env:
       TZ: "{{ system.timezone }}"
-      PUID: "{{ user.uid | string }}"
-      PGID: "{{ user.gid | string }}"
-      MYSQL_ROOT_PASSWORD: "{{ mariadb.root_password }}"
+      PUID: "{{ user_uid | string }}"
+      PGID: "{{ user_gid | string }}"
+      MYSQL_ROOT_PASSWORD: "{{ mariadb_root_password }}"
     restart_policy: unless-stopped

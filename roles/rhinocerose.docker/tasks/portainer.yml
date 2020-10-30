@@ -3,24 +3,24 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
     mode: 0755
   with_items:
-    - "{{ portainer.config_directory }}"
+    - "{{ portainer_config_directory }}"
 
 - name: portainer Docker Container
   docker_container:
-    name: "{{ portainer.container_name }}"
-    image: "{{ portainer.container_store }}/{{ portainer.container_name }}:{{ portainer.version }}"
+    name: "{{ portainer_container_name }}"
+    image: "{{ portainer_container_store }}/{{ portainer_container_name }}:{{ portainer_version }}"
     pull: true
     volumes:
-      - "{{ portainer.config_directory }}:/config"
+      - "{{ portainer_config_directory }}:/config"
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "{{ portainer.port }}:9000"
+      - "{{ portainer_port }}:9000"
     env:
       TZ: "{{ system.timezone }}"
-      PUID: "{{ user.uid | string }}"
-      PGID: "{{ user.gid | string }}"
+      PUID: "{{ user_uid | string }}"
+      PGID: "{{ user_gid | string }}"
     restart_policy: unless-stopped

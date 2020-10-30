@@ -4,20 +4,20 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
     mode: 0755
   with_items:
-    - "{{ docker_app_data }}/{{ plex.container_name }}"
+    - "{{ docker_app_data }}/{{ plex_container_name }}"
 
 - name: plex Docker Container
   docker_container:
-    name: "{{ plex.container_name }}"
-    image: "{{ plex.container_store }}/{{ plex.container_name }}:{{ plex.version }}"
+    name: "{{ plex_container_name }}"
+    image: "{{ plex_container_store }}/{{ plex_container_name }}:{{ plex_version }}"
     pull: true
     volumes:
-      - "{{ docker_app_data }}/{{ plex.container_name }}/library:/config"
-      - "{{ docker_app_data }}/{{ plex.container_name }}/transcode:/transcode"
+      - "{{ docker_app_data }}/{{ plex_container_name }}/library:/config"
+      - "{{ docker_app_data }}/{{ plex_container_name }}/transcode:/transcode"
       - "{{ media.tv }}:/data/tv"
       - "{{ media.movies }}:/data/movies"
     ports:
@@ -29,6 +29,6 @@
       - "1900:1900/udp"
     env:
       TZ: "{{ system.timezone }}"
-      PUID: "{{ user.uid | string }}"
-      PGID: "{{ user.gid | string }}"
+      PUID: "{{ user_uid | string }}"
+      PGID: "{{ user_gid | string }}"
     restart_policy: unless-stopped
