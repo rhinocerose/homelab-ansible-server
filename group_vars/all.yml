@@ -1,12 +1,11 @@
 ---
 
-user:
-  name: arch
-  group: arch
-  shell: /bin/bash
-  uid: 1000
-  gid: 1000
-  pass_hash: '$6$vultr.arch$a41beHtZ6/9A0eHjfII3VyArafuiGSFxXYas.LOR6dehb44EW6V0d.HxwHB5oiMTwXj.I3oE3cB/D8F1QvZFt1'
+user_name: arch
+user_group: arch
+user_shell: /bin/bash
+user_uid: 1000
+user_gid: 1000
+user_pass_hash: '$6$vultr.arch$a41beHtZ6/9A0eHjfII3VyArafuiGSFxXYas.LOR6dehb44EW6V0d.HxwHB5oiMTwXj.I3oE3cB/D8F1QvZFt1'
 
 system:
   timezone: America/Toronto
@@ -48,12 +47,12 @@ media:
   torrents: "{{ samba_shares_root }}/torrents"
 
 heimdall:
-  container_name: heimdall
-  container_store: linuxserver
-  config_directory: "{{ docker_app_data }}/heimdall"
-  version: latest
-  port_http: 9050
-  port_https: 9052
+heimdall_container_name: heimdall
+heimdall_container_store: linuxserver
+heimdall_config_directory: "{{ docker_app_data }}/heimdall"
+heimdall_version: latest
+heimdall_port_http: 9050
+heimdall_port_https: 9052
 
 dillinger:
   container_name: dillinger
