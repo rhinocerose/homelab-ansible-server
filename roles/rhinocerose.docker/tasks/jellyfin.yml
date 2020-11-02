@@ -18,8 +18,8 @@
     volumes:
       - "{{ docker_app_data }}/{{ jellyfin_container_name }}/library:/config"
       # - "{{ docker_app_data }}/{{ jellyfin_container_name }}/transcode:/transcode"
-      - "{{ media.tv }}:/data/tv"
-      - "{{ media.movies }}:/data/movies"
+      - "{{ media_tv }}:/data/tv"
+      - "{{ media_movies }}:/data/movies"
     ports:
       - "8096:8096"
       - 8920:8920 #optional
