@@ -18,8 +18,8 @@
     volumes:
       - "{{ docker_app_data }}/{{ plex_container_name }}/library:/config"
       - "{{ docker_app_data }}/{{ plex_container_name }}/transcode:/transcode"
-      - "{{ media.tv }}:/data/tv"
-      - "{{ media.movies }}:/data/movies"
+      - "{{ media_tv }}:/data/tv"
+      - "{{ media_movies }}:/data/movies"
     ports:
       - "32400:32400"
       - "32400:32400/udp"

@@ -36,7 +36,7 @@ Contributing	roles/dev-sec.ssh-hardening/README.md	/^## Contributing$/;"	s	chapt
 Contributor Guideline	roles/dev-sec.ssh-hardening/CONTRIBUTING.md	/^# Contributor Guideline$/;"	c
 Converge	roles/geerlingguy.docker/molecule/default/playbook.yml	/^- name: Converge$/;"	p
 Converge	roles/geerlingguy.ntp/molecule/default/playbook.yml	/^- name: Converge$/;"	p
-Create bookstack directories	roles/rhinocerose.docker/tasks/bookstack.yml	/^- name: Create bookstack directories$/;"	p
+Create bookstack_directories	roles/rhinocerose.docker/tasks/bookstack.yml	/^- name: Create bookstack_directories$/;"	p
 Create clock file if it doesn't exist.	roles/geerlingguy.ntp/tasks/clock-rhel-6.yml	/^- name: Create clock file if it doesn't exist.$/;"	p
 Create docker directory	roles/rhinocerose.docker/tasks/docker.yml	/^- name: Create docker directory$/;"	p
 Create docker network	roles/rhinocerose.docker/tasks/docker.yml	/^- name: Create docker network$/;"	p
@@ -79,7 +79,7 @@ Include	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^Include = \/etc\/pa
 Include	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^Include = \/etc\/pacman.d\/mirrorlist$/;"	k	section:extra
 Include	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^Include = \/etc\/pacman.d\/mirrorlist$/;"	k	section:multilib
 Include OS-specific variables.	roles/geerlingguy.ntp/tasks/main.yml	/^- name: Include OS-specific variables.$/;"	p
-Includions & Todos	README.md	/^# Includions & Todos$/;"	c
+Inclusions & Todos	README.md	/^# Inclusions & Todos$/;"	c
 Install Docker Compose (if configured).	roles/geerlingguy.docker/tasks/docker-compose.yml	/^- name: Install Docker Compose (if configured).$/;"	p
 Install Docker.	roles/geerlingguy.docker/tasks/main.yml	/^- name: Install Docker.$/;"	p
 Install base packages	roles/rhinocerose.base-packages/tasks/main.yml	/^- name: Install base packages$/;"	p
@@ -115,8 +115,6 @@ SigLevel	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^SigLevel = Optiona
 Summary	README.md	/^### Summary$/;"	S	section:ansible-template""How to Use
 Testing with Docker	roles/dev-sec.ssh-hardening/README.md	/^### Testing with Docker$/;"	S	section:ssh-hardening (Ansible Role)""Local Testing
 Testing with Virtualbox	roles/dev-sec.ssh-hardening/README.md	/^### Testing with Virtualbox$/;"	S	section:ssh-hardening (Ansible Role)""Local Testing
-Update all packages to the latest version	roles/rhinocerose.base-packages/tasks/main.yml	/^- name: Update all packages to the latest version$/;"	p
-Update and upgrade apt packages	roles/rhinocerose.base-packages/tasks/main.yml	/^- name: 'Update and upgrade apt packages'$/;"	p
 Use Markdown	roles/dev-sec.ssh-hardening/CONTRIBUTING.md	/^### Use Markdown$/;"	S	section:Contributor Guideline""Expectations
 Use with Ansible (and `docker` Python library)	roles/geerlingguy.docker/README.md	/^## Use with Ansible (and `docker` Python library)$/;"	s	chapter:Ansible Role: Docker
 [1.0.0](https://github.com/dev-sec/ansible-ssh-hardening/tree/1.0.0) (2015-04-30)	roles/dev-sec.ssh-hardening/CHANGELOG.md	/^## [1.0.0](https:\/\/github.com\/dev-sec\/ansible-ssh-hardening\/tree\/1.0.0) (2015-04-30)$/;"	s	chapter:Changelog
@@ -160,10 +158,10 @@ Use with Ansible (and `docker` Python library)	roles/geerlingguy.docker/README.m
 [9.7.0](https://github.com/dev-sec/ansible-ssh-hardening/tree/9.7.0) (2020-08-16)	roles/dev-sec.ssh-hardening/CHANGELOG.md	/^## [9.7.0](https:\/\/github.com\/dev-sec\/ansible-ssh-hardening\/tree\/9.7.0) (2020-08-16)$/;"	s	chapter:Changelog
 [9.8.0](https://github.com/dev-sec/ansible-ssh-hardening/tree/9.8.0) (2020-10-15)	roles/dev-sec.ssh-hardening/CHANGELOG.md	/^## [9.8.0](https:\/\/github.com\/dev-sec\/ansible-ssh-hardening\/tree\/9.8.0) (2020-10-15)$/;"	s	chapter:Changelog
 add user account to docker group	roles/rhinocerose.docker/tasks/docker.yml	/^- name: add user account to docker group$/;"	p
-all	Makefile	/^all: provision$/;"	t
+all	Makefile	/^all: update$/;"	t
 ansible-template	README.md	/^# ansible-template$/;"	c
 authorize {{ ssh_server_ports }} ports for selinux	roles/dev-sec.ssh-hardening/tasks/selinux.yml	/^- name: authorize {{ ssh_server_ports }} ports for selinux$/;"	p
-bookstack Docker Container	roles/rhinocerose.docker/tasks/bookstack.yml	/^- name: bookstack Docker Container$/;"	p
+bookstack_Docker Container	roles/rhinocerose.docker/tasks/bookstack.yml	/^- name: bookstack_Docker Container$/;"	p
 check if ssh_password module is already installed	roles/dev-sec.ssh-hardening/tasks/selinux.yml	/^- name: check if ssh_password module is already installed$/;"	p
 check if {{ sshd_moduli_file }} contains weak DH parameters	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: check if {{ sshd_moduli_file }} contains weak DH parameters$/;"	p
 community	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^[community]$/;"	s
@@ -219,5 +217,6 @@ set ssh authorized principals	roles/dev-sec.ssh-hardening/tasks/ca_keys_and_prin
 ssh-hardening (Ansible Role)	roles/dev-sec.ssh-hardening/README.md	/^# ssh-hardening (Ansible Role)$/;"	c
 test_hosts_file	roles/geerlingguy.ntp/molecule/default/tests/test_default.py	/^def test_hosts_file(host):$/;"	f
 testinfra_hosts	roles/geerlingguy.ntp/molecule/default/tests/test_default.py	/^testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner($/;"	v
+update	Makefile	/^update:$/;"	t
 wrapper playbook for kitchen testing "ansible-ssh-hardening" with custom settings	roles/dev-sec.ssh-hardening/tests/default_custom.yml	/^- name: wrapper playbook for kitchen testing "ansible-ssh-hardening" with custom settings$/;"	p
 wrapper playbook for kitchen testing "ansible-ssh-hardening" with default settings	roles/dev-sec.ssh-hardening/tests/default.yml	/^- name: wrapper playbook for kitchen testing "ansible-ssh-hardening" with default settings$/;"	p
