@@ -1,0 +1,32 @@
+---
+
+- name: Create jellyfin directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: 0755
+  with_items:
+    - "{{ docker_app_data }}/{{ jellyfin_container_name }}"
+
+- name: jellyfin Docker Container
+  docker_container:
+    name: "{{ jellyfin_container_name }}"
+    image: "{{ jellyfin_container_store }}/{{ jellyfin_container_name }}:{{ jellyfin_version }}"
+    pull: true
+    volumes:
+      - "{{ docker_app_data }}/{{ jellyfin_container_name }}/library:/config"
+      # - "{{ docker_app_data }}/{{ jellyfin_container_name }}/transcode:/transcode"
+      - "{{ media.tv }}:/data/tv"
+      - "{{ media.movies }}:/data/movies"
+    ports:
+      - "8096:8096"
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    env:
+      TZ: "{{ system.timezone }}"
+      PUID: "{{ user_uid | string }}"
+      PGID: "{{ user_gid | string }}"
+    restart_policy: unless-stopped
