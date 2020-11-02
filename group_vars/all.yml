@@ -88,6 +88,11 @@ portainer_config_directory: "{{ docker_app_data }}/portainer"
 portainer_version: latest
 portainer_port: 9000
 
+jellyfin_container_name: jellyfin
+jellyfin_container_store: linuxserver
+jellyfin_config_directory: "{{ docker_app_data }}/jellyfin"
+jellyfin_version: latest
+
 plex_container_name: plex
 plex_container_store: linuxserver
 plex_config_directory: "{{ docker_app_data }}/plex"
