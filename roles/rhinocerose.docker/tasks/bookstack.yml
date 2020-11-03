@@ -25,8 +25,8 @@
       PUID: "{{ user_uid | string }}"
       PGID: "{{ user_gid | string }}"
       MYSQL_USER: "{{ bookstack_db_user }}"
-      MYSQL_PASSWORD: "{{ bookstack_db_root_password }}"
-      MYSQL_db: "{{ bookstack_db_name }}"
+      MYSQL_PASSWORD: "{{ mariadb_root_password }}"
+      MYSQL_DATABASE: "{{ bookstack_db_name }}"
       MYSQL_ROOT_PASSWORD: "{{ mariadb_root_password }}"
       restart_policy: unless-stopped
 
