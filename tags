@@ -42,6 +42,8 @@ Create Gitlab Directories	roles/git-hosting/tasks/gitlab.yml	/^- name: Create Gi
 Create Gitlab container	roles/git-hosting/tasks/gitlab.yml	/^- name: Create Gitlab container$/;"	p
 Create Grafana Directories	roles/monitoring/tasks/grafana.yml	/^- name: Create Grafana Directories$/;"	p
 Create MySQL container for Gitea	roles/git-hosting/tasks/gitea.yml	/^- name: Create MySQL container for Gitea$/;"	p
+Create Traefik Directories	roles/traefik/tasks/traefik.yml	/^- name: Create Traefik Directories$/;"	p
+Create Wallabag Directories	roles/media/tasks/wallabag.yml	/^- name: Create Wallabag Directories$/;"	p
 Create bookstack_directories	roles/media/tasks/bookstack.yml	/^- name: Create bookstack_directories$/;"	p
 Create clock file if it doesn't exist.	roles/geerlingguy.ntp/tasks/clock-rhel-6.yml	/^- name: Create clock file if it doesn't exist.$/;"	p
 Create docker directory	roles/docker/tasks/docker.yml	/^- name: Create docker directory$/;"	p
@@ -62,6 +64,7 @@ Ensure Docker is started and enabled at boot.	roles/geerlingguy.docker/tasks/mai
 Ensure NTP is running and enabled as configured.	roles/geerlingguy.ntp/tasks/main.yml	/^- name: Ensure NTP is running and enabled as configured.$/;"	p
 Ensure NTP is stopped and disabled as configured.	roles/geerlingguy.ntp/tasks/main.yml	/^- name: Ensure NTP is stopped and disabled as configured.$/;"	p
 Ensure NTP-related packages are installed.	roles/geerlingguy.ntp/tasks/main.yml	/^- name: Ensure NTP-related packages are installed.$/;"	p
+Ensure Nginx Docker Container is absent	roles/traefik/tasks/traefik.yml	/^- name: Ensure Nginx Docker Container is absent$/;"	p
 Ensure containerd service dir exists.	roles/geerlingguy.docker/tasks/docker-1809-shim.yml	/^- name: Ensure containerd service dir exists.$/;"	p
 Ensure curl is present (on older systems without SNI).	roles/geerlingguy.docker/tasks/setup-Debian.yml	/^- name: Ensure curl is present (on older systems without SNI).$/;"	p
 Ensure dependencies are installed.	roles/geerlingguy.docker/tasks/setup-Debian.yml	/^- name: Ensure dependencies are installed.$/;"	p
@@ -99,11 +102,15 @@ License	roles/geerlingguy.ntp/README.md	/^## License$/;"	s	chapter:Ansible Role:
 License and Author	roles/dev-sec.ssh-hardening/README.md	/^## License and Author$/;"	s	chapter:ssh-hardening (Ansible Role)
 Local Testing	roles/dev-sec.ssh-hardening/README.md	/^## Local Testing$/;"	s	chapter:ssh-hardening (Ansible Role)
 LocalFileSigLevel	roles/userconfig/files/etc/pacman.conf	/^LocalFileSigLevel = Optional$/;"	k	section:options
+Nginx Letsencrypt Container is absent	roles/traefik/tasks/traefik.yml	/^- name: Nginx Letsencrypt Container is absent$/;"	p
 Perform full patching	roles/userconfig/tasks/main.yml	/^- name: Perform full patching$/;"	p
+Reload systemd	roles/monitoring/handlers/main.yml	/^- name: Reload systemd$/;"	p
 Reload systemd daemon if template is changed.	roles/geerlingguy.docker/tasks/docker-1809-shim.yml	/^- name: Reload systemd daemon if template is changed.$/;"	p
 Requirements	roles/dev-sec.ssh-hardening/README.md	/^## Requirements$/;"	s	chapter:ssh-hardening (Ansible Role)
 Requirements	roles/geerlingguy.docker/README.md	/^## Requirements$/;"	s	chapter:Ansible Role: Docker
 Requirements	roles/geerlingguy.ntp/README.md	/^## Requirements$/;"	s	chapter:Ansible Role: NTP
+Restart the Grafana service.	roles/monitoring/handlers/main.yml	/^- name: "Restart the Grafana service."$/;"	p
+Restart the Prometheus service	roles/monitoring/handlers/main.yml	/^- name: Restart the Prometheus service$/;"	p
 Role Variables	roles/dev-sec.ssh-hardening/README.md	/^## Role Variables$/;"	s	chapter:ssh-hardening (Ansible Role)
 Role Variables	roles/geerlingguy.docker/README.md	/^## Role Variables$/;"	s	chapter:Ansible Role: Docker
 Role Variables	roles/geerlingguy.ntp/README.md	/^## Role Variables$/;"	s	chapter:Ansible Role: NTP
@@ -121,8 +128,10 @@ Set timezone	roles/geerlingguy.ntp/tasks/main.yml	/^- name: Set timezone$/;"	p
 SigLevel	roles/userconfig/files/etc/pacman.conf	/^SigLevel    = Required DatabaseOptional$/;"	k	section:options
 SigLevel	roles/userconfig/files/etc/pacman.conf	/^SigLevel = Optional TrustAll$/;"	k	section:rhinocerose
 Summary	README.md	/^### Summary$/;"	S	section:ansible-template""How to Use
+Template Traefik config.toml	roles/traefik/tasks/traefik.yml	/^- name: Template Traefik config.toml$/;"	p
 Testing with Docker	roles/dev-sec.ssh-hardening/README.md	/^### Testing with Docker$/;"	S	section:ssh-hardening (Ansible Role)""Local Testing
 Testing with Virtualbox	roles/dev-sec.ssh-hardening/README.md	/^### Testing with Virtualbox$/;"	S	section:ssh-hardening (Ansible Role)""Local Testing
+Traefik Docker Container	roles/traefik/tasks/traefik.yml	/^- name: Traefik Docker Container$/;"	p
 Use Markdown	roles/dev-sec.ssh-hardening/CONTRIBUTING.md	/^### Use Markdown$/;"	S	section:Contributor Guideline""Expectations
 Use with Ansible (and `docker` Python library)	roles/geerlingguy.docker/README.md	/^## Use with Ansible (and `docker` Python library)$/;"	s	chapter:Ansible Role: Docker
 [1.0.0](https://github.com/dev-sec/ansible-ssh-hardening/tree/1.0.0) (2015-04-30)	roles/dev-sec.ssh-hardening/CHANGELOG.md	/^## [1.0.0](https:\/\/github.com\/dev-sec\/ansible-ssh-hardening\/tree\/1.0.0) (2015-04-30)$/;"	s	chapter:Changelog
@@ -229,5 +238,6 @@ ssh-hardening (Ansible Role)	roles/dev-sec.ssh-hardening/README.md	/^# ssh-harde
 test_hosts_file	roles/geerlingguy.ntp/molecule/default/tests/test_default.py	/^def test_hosts_file(host):$/;"	f
 testinfra_hosts	roles/geerlingguy.ntp/molecule/default/tests/test_default.py	/^testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner($/;"	v
 update	Makefile	/^update:$/;"	t
+wallabag Docker Container	roles/media/tasks/wallabag.yml	/^- name: wallabag Docker Container$/;"	p
 wrapper playbook for kitchen testing "ansible-ssh-hardening" with custom settings	roles/dev-sec.ssh-hardening/tests/default_custom.yml	/^- name: wrapper playbook for kitchen testing "ansible-ssh-hardening" with custom settings$/;"	p
 wrapper playbook for kitchen testing "ansible-ssh-hardening" with default settings	roles/dev-sec.ssh-hardening/tests/default.yml	/^- name: wrapper playbook for kitchen testing "ansible-ssh-hardening" with default settings$/;"	p
