@@ -4,8 +4,8 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: git
-    group: git
+    owner: arch
+    group: arch
     recurse: yes
   with_items:
     - "{{ gitea_config_directory }}"
@@ -51,7 +51,7 @@
     image: "{{ gitea_container_store }}/{{ gitea_container_name }}:{{ gitea_version }}"
     pull: true
     links:
-        - {{ gitea_db_container }}:db
+        - "{{ gitea_db_container }}:db"
     volumes:
       - "{{ gitea_config_directory }}/gitea:/data:rw"
     ports:
@@ -64,9 +64,9 @@
       DB_USER: "gitea"
       DB_PASSWD: "gitea"
       RUN_MODE: "prod"
-      SSH_DOMAIN: "{{ ansible_nas_hostname }}"
-      SSH_PORT: "{{ gitea_port_ssh }}"
-      ROOT_URL: "http://{{ ansible_nas_hostname }}:{{ gitea_port_http }}/"
-      USER_UID: "1309"
-      USER_GID: "1309"
+      # SSH_DOMAIN: "{{ ansible_nas_hostname }}"
+      # SSH_PORT: "{{ gitea_port_ssh }}"
+      # ROOT_URL: "http://{{ ansible_nas_hostname }}:{{ gitea_port_http }}/"
+      # USER_UID: "1309"
+      # USER_GID: "1309"
     restart_policy: unless-stopped

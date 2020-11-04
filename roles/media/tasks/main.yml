@@ -11,3 +11,7 @@
 - include_tasks: jellyfin.yml
   when: (jellyfin_enabled | default(False))
   tags: jellyfin
+
+- include_tasks: wallabag.yml
+  when: (wallabag_enabled | default(False))
+  tags: wallabag

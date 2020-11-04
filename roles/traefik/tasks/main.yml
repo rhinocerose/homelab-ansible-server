@@ -1,0 +1,5 @@
+---
+
+- import_tasks: traefik.yml
+  when: (traefik_enabled | default(False))
+  tags: traefik

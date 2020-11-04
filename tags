@@ -12,15 +12,15 @@ Add Docker apt key (alternative for older systems without SNI).	roles/geerlinggu
 Add Docker apt key.	roles/geerlingguy.docker/tasks/setup-Debian.yml	/^- name: Add Docker apt key.$/;"	p
 Add Docker repository.	roles/geerlingguy.docker/tasks/setup-Debian.yml	/^- name: Add Docker repository.$/;"	p
 Add Docker repository.	roles/geerlingguy.docker/tasks/setup-RedHat.yml	/^- name: Add Docker repository.$/;"	p
-Add SSH public key for user	roles/rhinocerose.userconfig/tasks/main.yml	/^- name: Add SSH public key for user$/;"	p
-Add anzen group	roles/rhinocerose.userconfig/tasks/main.yml	/^- name: Add anzen group$/;"	p
-Add local user	roles/rhinocerose.userconfig/tasks/main.yml	/^- name: Add local user$/;"	p
+Add SSH public key for user	roles/userconfig/tasks/main.yml	/^- name: Add SSH public key for user$/;"	p
+Add anzen group	roles/userconfig/tasks/main.yml	/^- name: Add anzen group$/;"	p
+Add local user	roles/userconfig/tasks/main.yml	/^- name: Add local user$/;"	p
 Add shim to ensure Docker can start in all environments.	roles/geerlingguy.docker/tasks/docker-1809-shim.yml	/^- name: Add shim to ensure Docker can start in all environments.$/;"	p
-Add sudoer rule for local user	roles/rhinocerose.userconfig/tasks/main.yml	/^- name: Add sudoer rule for local user$/;"	p
+Add sudoer rule for local user	roles/userconfig/tasks/main.yml	/^- name: Add sudoer rule for local user$/;"	p
 Add tests	roles/dev-sec.ssh-hardening/CONTRIBUTING.md	/^### Add tests$/;"	S	section:Contributor Guideline""Expectations
 Ansible Role: Docker	roles/geerlingguy.docker/README.md	/^# Ansible Role: Docker$/;"	c
 Ansible Role: NTP	roles/geerlingguy.ntp/README.md	/^# Ansible Role: NTP$/;"	c
-Architecture	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^Architecture = auto$/;"	k	section:options
+Architecture	roles/userconfig/files/etc/pacman.conf	/^Architecture = auto$/;"	k	section:options
 Author Information	roles/geerlingguy.docker/README.md	/^## Author Information$/;"	s	chapter:Ansible Role: Docker
 Author Information	roles/geerlingguy.ntp/README.md	/^## Author Information$/;"	s	chapter:Ansible Role: NTP
 Be explicit	roles/dev-sec.ssh-hardening/CONTRIBUTING.md	/^### Be explicit$/;"	S	section:Contributor Guideline""Expectations
@@ -36,15 +36,22 @@ Contributing	roles/dev-sec.ssh-hardening/README.md	/^## Contributing$/;"	s	chapt
 Contributor Guideline	roles/dev-sec.ssh-hardening/CONTRIBUTING.md	/^# Contributor Guideline$/;"	c
 Converge	roles/geerlingguy.docker/molecule/default/playbook.yml	/^- name: Converge$/;"	p
 Converge	roles/geerlingguy.ntp/molecule/default/playbook.yml	/^- name: Converge$/;"	p
-Create bookstack_directories	roles/rhinocerose.docker/tasks/bookstack.yml	/^- name: Create bookstack_directories$/;"	p
+Create Gitea Directories	roles/git-hosting/tasks/gitea.yml	/^- name: Create Gitea Directories$/;"	p
+Create Gitea container	roles/git-hosting/tasks/gitea.yml	/^- name: Create Gitea container$/;"	p
+Create Gitlab Directories	roles/git-hosting/tasks/gitlab.yml	/^- name: Create Gitlab Directories$/;"	p
+Create Gitlab container	roles/git-hosting/tasks/gitlab.yml	/^- name: Create Gitlab container$/;"	p
+Create Grafana Directories	roles/monitoring/tasks/grafana.yml	/^- name: Create Grafana Directories$/;"	p
+Create MySQL container for Gitea	roles/git-hosting/tasks/gitea.yml	/^- name: Create MySQL container for Gitea$/;"	p
+Create bookstack_directories	roles/media/tasks/bookstack.yml	/^- name: Create bookstack_directories$/;"	p
 Create clock file if it doesn't exist.	roles/geerlingguy.ntp/tasks/clock-rhel-6.yml	/^- name: Create clock file if it doesn't exist.$/;"	p
-Create docker directory	roles/rhinocerose.docker/tasks/docker.yml	/^- name: Create docker directory$/;"	p
-Create docker network	roles/rhinocerose.docker/tasks/docker.yml	/^- name: Create docker network$/;"	p
-Create heimdall directories	roles/rhinocerose.docker/tasks/heimdall.yml	/^- name: Create heimdall directories$/;"	p
-Create jellyfin directories	roles/rhinocerose.docker/tasks/jellyfin.yml	/^- name: Create jellyfin directories$/;"	p
-Create mariadb directories	roles/rhinocerose.docker/tasks/mariadb.yml	/^- name: Create mariadb directories$/;"	p
-Create plex directories	roles/rhinocerose.docker/tasks/plex.yml	/^- name: Create plex directories$/;"	p
-Create portainer directories	roles/rhinocerose.docker/tasks/portainer.yml	/^- name: Create portainer directories$/;"	p
+Create docker directory	roles/docker/tasks/docker.yml	/^- name: Create docker directory$/;"	p
+Create docker network	roles/docker/tasks/docker.yml	/^- name: Create docker network$/;"	p
+Create heimdall directories	roles/monitoring/tasks/heimdall.yml	/^- name: Create heimdall directories$/;"	p
+Create jellyfin directories	roles/media/tasks/jellyfin.yml	/^- name: Create jellyfin directories$/;"	p
+Create mariadb directories	roles/docker/tasks/mariadb.yml	/^- name: Create mariadb directories$/;"	p
+Create mariadb directories	roles/media/tasks/mariadb.yml	/^- name: Create mariadb directories$/;"	p
+Create plex directories	roles/media/tasks/plex.yml	/^- name: Create plex directories$/;"	p
+Create portainer directories	roles/monitoring/tasks/portainer.yml	/^- name: Create portainer directories$/;"	p
 Delete existing docker-compose version if it's different.	roles/geerlingguy.docker/tasks/docker-compose.yml	/^- name: Delete existing docker-compose version if it's different.$/;"	p
 Dependencies	roles/geerlingguy.docker/README.md	/^## Dependencies$/;"	s	chapter:Ansible Role: Docker
 Dependencies	roles/geerlingguy.ntp/README.md	/^## Dependencies$/;"	s	chapter:Ansible Role: NTP
@@ -72,27 +79,27 @@ Follow coding styles	roles/dev-sec.ssh-hardening/CONTRIBUTING.md	/^### Follow co
 Generate ntp.conf file	roles/geerlingguy.ntp/tasks/main.yml	/^- name: Generate ntp.conf file$/;"	p
 GitHub repositories	roles/dev-sec.ssh-hardening/CONTRIBUTING.md	/^### GitHub repositories$/;"	S	section:Contributor Guideline""Communication
 Group_Vars	README.md	/^### Group_Vars$/;"	S	section:ansible-template""How to Use
-HoldPkg	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^HoldPkg     = pacman glibc$/;"	k	section:options
+HoldPkg	roles/userconfig/files/etc/pacman.conf	/^HoldPkg     = pacman glibc$/;"	k	section:options
 Host_Vars	README.md	/^### Host_Vars$/;"	S	section:ansible-template""How to Use
 How to Use	README.md	/^## How to Use$/;"	s	chapter:ansible-template
-Include	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^Include = \/etc\/pacman.d\/mirrorlist$/;"	k	section:community
-Include	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^Include = \/etc\/pacman.d\/mirrorlist$/;"	k	section:core
-Include	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^Include = \/etc\/pacman.d\/mirrorlist$/;"	k	section:extra
-Include	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^Include = \/etc\/pacman.d\/mirrorlist$/;"	k	section:multilib
+Include	roles/userconfig/files/etc/pacman.conf	/^Include = \/etc\/pacman.d\/mirrorlist$/;"	k	section:community
+Include	roles/userconfig/files/etc/pacman.conf	/^Include = \/etc\/pacman.d\/mirrorlist$/;"	k	section:core
+Include	roles/userconfig/files/etc/pacman.conf	/^Include = \/etc\/pacman.d\/mirrorlist$/;"	k	section:extra
+Include	roles/userconfig/files/etc/pacman.conf	/^Include = \/etc\/pacman.d\/mirrorlist$/;"	k	section:multilib
 Include OS-specific variables.	roles/geerlingguy.ntp/tasks/main.yml	/^- name: Include OS-specific variables.$/;"	p
 Inclusions & Todos	README.md	/^# Inclusions & Todos$/;"	c
 Install Docker Compose (if configured).	roles/geerlingguy.docker/tasks/docker-compose.yml	/^- name: Install Docker Compose (if configured).$/;"	p
 Install Docker.	roles/geerlingguy.docker/tasks/main.yml	/^- name: Install Docker.$/;"	p
-Install base packages	roles/rhinocerose.base-packages/tasks/main.yml	/^- name: Install base packages$/;"	p
-Install docker network resources	roles/rhinocerose.docker/tasks/docker.yml	/^- name: Install docker network resources$/;"	p
+Install base packages	roles/base-packages/tasks/main.yml	/^- name: Install base packages$/;"	p
+Install docker network resources	roles/docker/tasks/docker.yml	/^- name: Install docker network resources$/;"	p
 Inventory	README.md	/^### Inventory$/;"	S	section:ansible-template""How to Use
 Library	README.md	/^### Library$/;"	S	section:ansible-template""How to Use
 License	roles/geerlingguy.docker/README.md	/^## License$/;"	s	chapter:Ansible Role: Docker
 License	roles/geerlingguy.ntp/README.md	/^## License$/;"	s	chapter:Ansible Role: NTP
 License and Author	roles/dev-sec.ssh-hardening/README.md	/^## License and Author$/;"	s	chapter:ssh-hardening (Ansible Role)
 Local Testing	roles/dev-sec.ssh-hardening/README.md	/^## Local Testing$/;"	s	chapter:ssh-hardening (Ansible Role)
-LocalFileSigLevel	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^LocalFileSigLevel = Optional$/;"	k	section:options
-Perform full patching	roles/rhinocerose.userconfig/tasks/main.yml	/^- name: Perform full patching$/;"	p
+LocalFileSigLevel	roles/userconfig/files/etc/pacman.conf	/^LocalFileSigLevel = Optional$/;"	k	section:options
+Perform full patching	roles/userconfig/tasks/main.yml	/^- name: Perform full patching$/;"	p
 Reload systemd daemon if template is changed.	roles/geerlingguy.docker/tasks/docker-1809-shim.yml	/^- name: Reload systemd daemon if template is changed.$/;"	p
 Requirements	roles/dev-sec.ssh-hardening/README.md	/^## Requirements$/;"	s	chapter:ssh-hardening (Ansible Role)
 Requirements	roles/geerlingguy.docker/README.md	/^## Requirements$/;"	s	chapter:Ansible Role: Docker
@@ -109,10 +116,10 @@ Roles/Role/Meta	README.md	/^#### Roles\/Role\/Meta$/;"	t	subsection:ansible-temp
 Roles/Role/Tasks	README.md	/^#### Roles\/Role\/Tasks$/;"	t	subsection:ansible-template""How to Use""Roles
 Roles/Role/Templates	README.md	/^#### Roles\/Role\/Templates$/;"	t	subsection:ansible-template""How to Use""Roles
 Roles/Role/Vars	README.md	/^#### Roles\/Role\/Vars$/;"	t	subsection:ansible-template""How to Use""Roles
-Server	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^Server = https:\/\/rhinocerose-arch.s3.ca-central-1.amazonaws.com\/repo\/x86_64\/$/;"	k	section:rhinocerose
+Server	roles/userconfig/files/etc/pacman.conf	/^Server = https:\/\/rhinocerose-arch.s3.ca-central-1.amazonaws.com\/repo\/x86_64\/$/;"	k	section:rhinocerose
 Set timezone	roles/geerlingguy.ntp/tasks/main.yml	/^- name: Set timezone$/;"	p
-SigLevel	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^SigLevel    = Required DatabaseOptional$/;"	k	section:options
-SigLevel	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^SigLevel = Optional TrustAll$/;"	k	section:rhinocerose
+SigLevel	roles/userconfig/files/etc/pacman.conf	/^SigLevel    = Required DatabaseOptional$/;"	k	section:options
+SigLevel	roles/userconfig/files/etc/pacman.conf	/^SigLevel = Optional TrustAll$/;"	k	section:rhinocerose
 Summary	README.md	/^### Summary$/;"	S	section:ansible-template""How to Use
 Testing with Docker	roles/dev-sec.ssh-hardening/README.md	/^### Testing with Docker$/;"	S	section:ssh-hardening (Ansible Role)""Local Testing
 Testing with Virtualbox	roles/dev-sec.ssh-hardening/README.md	/^### Testing with Virtualbox$/;"	S	section:ssh-hardening (Ansible Role)""Local Testing
@@ -158,44 +165,46 @@ Use with Ansible (and `docker` Python library)	roles/geerlingguy.docker/README.m
 [9.6.0](https://github.com/dev-sec/ansible-ssh-hardening/tree/9.6.0) (2020-07-28)	roles/dev-sec.ssh-hardening/CHANGELOG.md	/^## [9.6.0](https:\/\/github.com\/dev-sec\/ansible-ssh-hardening\/tree\/9.6.0) (2020-07-28)$/;"	s	chapter:Changelog
 [9.7.0](https://github.com/dev-sec/ansible-ssh-hardening/tree/9.7.0) (2020-08-16)	roles/dev-sec.ssh-hardening/CHANGELOG.md	/^## [9.7.0](https:\/\/github.com\/dev-sec\/ansible-ssh-hardening\/tree\/9.7.0) (2020-08-16)$/;"	s	chapter:Changelog
 [9.8.0](https://github.com/dev-sec/ansible-ssh-hardening/tree/9.8.0) (2020-10-15)	roles/dev-sec.ssh-hardening/CHANGELOG.md	/^## [9.8.0](https:\/\/github.com\/dev-sec\/ansible-ssh-hardening\/tree\/9.8.0) (2020-10-15)$/;"	s	chapter:Changelog
-add user account to docker group	roles/rhinocerose.docker/tasks/docker.yml	/^- name: add user account to docker group$/;"	p
+add user account to docker group	roles/docker/tasks/docker.yml	/^- name: add user account to docker group$/;"	p
 all	Makefile	/^all: update$/;"	t
 ansible-template	README.md	/^# ansible-template$/;"	c
 authorize {{ ssh_server_ports }} ports for selinux	roles/dev-sec.ssh-hardening/tasks/selinux.yml	/^- name: authorize {{ ssh_server_ports }} ports for selinux$/;"	p
-bookstack_Docker Container	roles/rhinocerose.docker/tasks/bookstack.yml	/^- name: bookstack_Docker Container$/;"	p
+bookstack_Docker Container	roles/media/tasks/bookstack.yml	/^- name: bookstack_Docker Container$/;"	p
 check if ssh_password module is already installed	roles/dev-sec.ssh-hardening/tasks/selinux.yml	/^- name: check if ssh_password module is already installed$/;"	p
 check if {{ sshd_moduli_file }} contains weak DH parameters	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: check if {{ sshd_moduli_file }} contains weak DH parameters$/;"	p
-community	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^[community]$/;"	s
-core	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^[core]$/;"	s
+community	roles/userconfig/files/etc/pacman.conf	/^[community]$/;"	s
+core	roles/userconfig/files/etc/pacman.conf	/^[core]$/;"	s
 create revoked_keys and set permissions to root/600	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: create revoked_keys and set permissions to root\/600$/;"	p
 create ssh authorized principals directories	roles/dev-sec.ssh-hardening/tasks/ca_keys_and_principals.yml	/^- name: create ssh authorized principals directories$/;"	p
 create ssh_config and set permissions to root/644	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: create ssh_config and set permissions to root\/644$/;"	p
 create sshd_config and set permissions to root/600	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: create sshd_config and set permissions to root\/600$/;"	p
 disable SSH server CRYPTO_POLICY	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: disable SSH server CRYPTO_POLICY$/;"	p
 disable dynamic MOTD	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: disable dynamic MOTD$/;"	p
-extra	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^[extra]$/;"	s
+extra	roles/userconfig/files/etc/pacman.conf	/^[extra]$/;"	s
 gather package facts	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: gather package facts$/;"	p
 get openssh-version	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: get openssh-version$/;"	p
 git and GitHub	roles/dev-sec.ssh-hardening/CONTRIBUTING.md	/^## git and GitHub$/;"	s	chapter:Contributor Guideline
-heimdall Docker Container	roles/rhinocerose.docker/tasks/heimdall.yml	/^- name: heimdall Docker Container$/;"	p
+grafana Docker Container	roles/monitoring/tasks/grafana.yml	/^- name: grafana Docker Container$/;"	p
+heimdall Docker Container	roles/monitoring/tasks/heimdall.yml	/^- name: heimdall Docker Container$/;"	p
 include selinux specific tasks	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: include selinux specific tasks$/;"	p
 include tasks to setup ca keys and principals	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: include tasks to setup ca keys and principals$/;"	p
 install selinux dependencies when selinux is installed	roles/dev-sec.ssh-hardening/tasks/selinux.yml	/^- name: install selinux dependencies when selinux is installed$/;"	p
-jellyfin Docker Container	roles/rhinocerose.docker/tasks/jellyfin.yml	/^- name: jellyfin Docker Container$/;"	p
-mariadb Docker Container	roles/rhinocerose.docker/tasks/bookstack.yml	/^- name: mariadb Docker Container$/;"	p
-mariadb Docker Container	roles/rhinocerose.docker/tasks/mariadb.yml	/^- name: mariadb Docker Container$/;"	p
-multilib	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^[multilib]$/;"	s
-options	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^[options]$/;"	s
+jellyfin Docker Container	roles/media/tasks/jellyfin.yml	/^- name: jellyfin Docker Container$/;"	p
+mariadb Docker Container	roles/docker/tasks/mariadb.yml	/^- name: mariadb Docker Container$/;"	p
+mariadb Docker Container	roles/media/tasks/bookstack.yml	/^- name: mariadb Docker Container$/;"	p
+mariadb Docker Container	roles/media/tasks/mariadb.yml	/^- name: mariadb Docker Container$/;"	p
+multilib	roles/userconfig/files/etc/pacman.conf	/^[multilib]$/;"	s
+options	roles/userconfig/files/etc/pacman.conf	/^[options]$/;"	s
 parse openssh-version	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: parse openssh-version$/;"	p
-plex Docker Container	roles/rhinocerose.docker/tasks/plex.yml	/^- name: plex Docker Container$/;"	p
-portainer Docker Container	roles/rhinocerose.docker/tasks/portainer.yml	/^- name: portainer Docker Container$/;"	p
+plex Docker Container	roles/media/tasks/plex.yml	/^- name: plex Docker Container$/;"	p
+portainer Docker Container	roles/monitoring/tasks/portainer.yml	/^- name: portainer Docker Container$/;"	p
 provision	Makefile	/^provision:$/;"	t
 remove all small primes	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: remove all small primes$/;"	p
 remove selinux-policy when Pam is used, because Allowing sshd to read the shadow file directly is considered a potential security risk	roles/dev-sec.ssh-hardening/tasks/selinux.yml	/^- name: remove selinux-policy when Pam is used, because Allowing sshd to read the shadow file di/;"	p
 restart docker	roles/geerlingguy.docker/handlers/main.yml	/^- name: restart docker$/;"	p
 restart ntp	roles/geerlingguy.ntp/handlers/main.yml	/^- name: restart ntp$/;"	p
 restart sshd	roles/dev-sec.ssh-hardening/handlers/main.yml	/^- name: restart sshd$/;"	p
-rhinocerose	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^[rhinocerose]$/;"	s
+rhinocerose	roles/userconfig/files/etc/pacman.conf	/^[rhinocerose]$/;"	s
 set OS dependent variables	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: set OS dependent variables$/;"	p
 set ciphers according to openssh-version if openssh >= 5.3	roles/dev-sec.ssh-hardening/tasks/crypto_ciphers.yml	/^- name: set ciphers according to openssh-version if openssh >= 5.3$/;"	p
 set ciphers according to openssh-version if openssh >= 6.6	roles/dev-sec.ssh-hardening/tasks/crypto_ciphers.yml	/^- name: set ciphers according to openssh-version if openssh >= 6.6$/;"	p

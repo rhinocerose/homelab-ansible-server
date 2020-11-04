@@ -1,0 +1,25 @@
+---
+
+- name: Create Wallabag Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ wallabag_config_directory }}/data"
+    - "{{ wallabag_config_directory }}/images"
+
+- name: wallabag Docker Container
+  docker_container:
+    name: "{{ wallabag_container_name }}"
+    image: "{{ wallabag_container_store }}/{{ wallabag_container_name }}:{{ wallabag_version }}"
+    pull: true
+    volumes:
+      - "{{ wallabag_config_directory }}/data:/var/www/wallabag/data:rw"
+      - "{{ wallabag_config_directory }}/images:/var/www/wallabag/web/assets/images:rw"
+    ports:
+      - "{{ wallabag_port_http }}:80"
+    env:
+      TZ: "{{ system.timezone }}"
+      PUID: "{{ user_uid | string }}"
+      PGID: "{{ user_gid | string }}"
+    restart_policy: unless-stopped

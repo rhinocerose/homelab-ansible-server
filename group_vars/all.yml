@@ -32,6 +32,25 @@ ssh_setting:
   challenge_response_authentication: "no"
 
 ###
+### Traefik
+###
+traefik_container_name: traefik
+traefik_container_store: traefik
+traefik_version: "v1.7"
+traefik_docker_image: traefik:v1.7
+traefik_config_directory: "{{ docker_home }}/traefik"
+traefik_debug: "false"
+# External Access
+# Traefik will allow access to certain applications externally. To enable this you'll either a domain name that points to your
+# home static IP address, the cloudflare with the cloudflare_ddns dynamic DNS container enabled, or use a dynamic DNS provider like no-ip.
+# You'll also need to map ports 80 and 443 from your router to your ansible-nas server, then enable the per-app "available_externally"
+# settings.
+traefik_enabled: false
+traefik_port_http: "80"
+traefik_port_https: "443"
+traefik_port_ui: "8083"
+
+###
 ### MySQL/MariaDB settings
 ###
 mysql_root_password: !vault |
@@ -169,6 +188,16 @@ portainer_version: latest
 portainer_port: 9000
 
 ###
+### Wallabag
+###
+wallabag_enabled: false
+wallabag_container_name: wallabag
+wallabag_container_store: wallabag
+wallabag_config_directory: "{{ docker_app_data }}/wallabag"
+wallabag_version: latest
+wallabag_port_http: 7780
+
+###
 ### Jellyfin
 ###
 jellyfin_enabled: false
@@ -176,6 +205,7 @@ jellyfin_container_name: jellyfin
 jellyfin_container_store: linuxserver
 jellyfin_config_directory: "{{ docker_app_data }}/jellyfin"
 jellyfin_version: latest
+jellyfin_port_http: 1019
 
 ###
 ### Plex

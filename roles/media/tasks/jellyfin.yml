@@ -8,7 +8,7 @@
     group: "{{ user_name }}"
     mode: 0755
   with_items:
-    - "{{ docker_app_data }}/{{ jellyfin_container_name }}"
+    - "{{ jellyfin_config_directory }}"
 
 - name: jellyfin Docker Container
   docker_container:
@@ -16,15 +16,15 @@
     image: "{{ jellyfin_container_store }}/{{ jellyfin_container_name }}:{{ jellyfin_version }}"
     pull: true
     volumes:
-      - "{{ docker_app_data }}/{{ jellyfin_container_name }}/library:/config"
+      - "{{ jellyfin_config_directory }}/library:/config"
       # - "{{ docker_app_data }}/{{ jellyfin_container_name }}/transcode:/transcode"
       - "{{ media_tv }}:/data/tv"
       - "{{ media_movies }}:/data/movies"
     ports:
       - "8096:8096"
-      - 8920:8920 #optional
-      - 7359:7359/udp #optional
-      - 1900:1900/udp #optional
+      # - 8920:8920 #optional
+      # - 7359:7359/udp #optional
+      # - 1900:1900/udp #optional
     env:
       TZ: "{{ system.timezone }}"
       PUID: "{{ user_uid | string }}"
