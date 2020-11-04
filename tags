@@ -41,6 +41,7 @@ Create clock file if it doesn't exist.	roles/geerlingguy.ntp/tasks/clock-rhel-6.
 Create docker directory	roles/rhinocerose.docker/tasks/docker.yml	/^- name: Create docker directory$/;"	p
 Create docker network	roles/rhinocerose.docker/tasks/docker.yml	/^- name: Create docker network$/;"	p
 Create heimdall directories	roles/rhinocerose.docker/tasks/heimdall.yml	/^- name: Create heimdall directories$/;"	p
+Create jellyfin directories	roles/rhinocerose.docker/tasks/jellyfin.yml	/^- name: Create jellyfin directories$/;"	p
 Create mariadb directories	roles/rhinocerose.docker/tasks/mariadb.yml	/^- name: Create mariadb directories$/;"	p
 Create plex directories	roles/rhinocerose.docker/tasks/plex.yml	/^- name: Create plex directories$/;"	p
 Create portainer directories	roles/rhinocerose.docker/tasks/portainer.yml	/^- name: Create portainer directories$/;"	p
@@ -180,6 +181,7 @@ heimdall Docker Container	roles/rhinocerose.docker/tasks/heimdall.yml	/^- name: 
 include selinux specific tasks	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: include selinux specific tasks$/;"	p
 include tasks to setup ca keys and principals	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: include tasks to setup ca keys and principals$/;"	p
 install selinux dependencies when selinux is installed	roles/dev-sec.ssh-hardening/tasks/selinux.yml	/^- name: install selinux dependencies when selinux is installed$/;"	p
+jellyfin Docker Container	roles/rhinocerose.docker/tasks/jellyfin.yml	/^- name: jellyfin Docker Container$/;"	p
 mariadb Docker Container	roles/rhinocerose.docker/tasks/bookstack.yml	/^- name: mariadb Docker Container$/;"	p
 mariadb Docker Container	roles/rhinocerose.docker/tasks/mariadb.yml	/^- name: mariadb Docker Container$/;"	p
 multilib	roles/rhinocerose.userconfig/files/etc/pacman.conf	/^[multilib]$/;"	s
