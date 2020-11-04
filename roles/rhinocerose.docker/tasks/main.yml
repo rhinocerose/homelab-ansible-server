@@ -1,8 +1,0 @@
----
-
-- include_tasks: docker.yml
-- include_tasks: portainer.yml
-- include_tasks: heimdall.yml
-- include_tasks: bookstack.yml
-# - include_tasks: plex.yml
-# - include_tasks: jellyfin.yml

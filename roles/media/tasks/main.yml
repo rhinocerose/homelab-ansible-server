@@ -1,0 +1,13 @@
+---
+
+- include_tasks: bookstack.yml
+  when: (bookstack_enabled | default(False))
+  tags: bookstack
+
+- include_tasks: plex.yml
+  when: (plex_enabled | default(False))
+  tags: plex
+
+- include_tasks: jellyfin.yml
+  when: (jellyfin_enabled | default(False))
+  tags: jellyfin

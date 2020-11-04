@@ -1,0 +1,28 @@
+---
+
+- name: Create Gitlab Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: gitlab
+    group: gitlab
+  with_items:
+    - "{{ gitlab_config_directory }}/config"
+    - "{{ gitlab_config_directory }}/log"
+    - "{{ gitlab_config_directory }}/data"
+
+- name: Create Gitlab container
+  docker_container:
+    name: gitlab
+    image: "{{ gitlab_container_store}}/{{ gitlab_container_name }}:{{ gitlab_version }}"
+    pull: true
+    volumes:
+      - "{{ gitlab_config_directory }}/config:/etc/gitlab:rw"
+      - "{{ gitlab_config_directory }}/log:/var/log/gitlab:rw"
+      - "{{ gitlab_config_directory }}/data:/var/opt/gitlab:rw"
+    ports:
+      - "{{ gitlab_port_http }}:80"
+      - "{{ gitlab_port_https }}:443"
+      - "{{ gitlab_port_ssh }}:22"
+    # hostname: "gitlab.{{ ansible_nas_domain }}"
+    restart_policy: unless-stopped

@@ -5,5 +5,9 @@
   become: yes
   roles:
     - geerlingguy.docker
-    - rhinocerose.base-packages
-    - rhinocerose.docker
+    - base-packages
+    - docker
+    - base-packages
+    - monitoring
+    - media
+    - git-hosting

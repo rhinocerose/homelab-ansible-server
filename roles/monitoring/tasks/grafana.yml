@@ -1,0 +1,32 @@
+---
+
+- name: Create Grafana Directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "472"
+    recurse: yes
+  with_items:
+    - "{{ grafana_data_directory }}"
+    - "{{ grafana_data_directory }}/data"
+    - "{{ grafana_data_directory }}/data/dashboards/ansible-nas"
+    - "{{ grafana_data_directory }}/config/"
+    - "{{ grafana_data_directory }}/config/provisioning"
+    - "{{ grafana_data_directory }}/config/provisioning/datasources"
+    - "{{ grafana_data_directory }}/config/provisioning/dashboards"
+
+- name: grafana Docker Container
+  docker_container:
+    name: "{{ grafana_container_name }}"
+    image: "{{ grafana_container_store }}/{{ grafana_container_name }}:{{ grafana_version }}"
+    pull: true
+    volumes:
+      - "{{ grafana_data_directory }}/data:/var/lib/grafana:rw"
+      - "{{ grafana_data_directory }}/config/provisioning:/etc/grafana/provisioning:ro"
+    ports:
+      - "{{ grafana_port }}:3000"
+    env:
+      TZ: "{{ system.timezone }}"
+      PUID: "{{ user_uid | string }}"
+      PGID: "{{ user_gid | string }}"
+    restart_policy: unless-stopped

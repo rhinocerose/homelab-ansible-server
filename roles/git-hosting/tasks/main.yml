@@ -1,0 +1,9 @@
+---
+
+- include_tasks: gitea.yml
+  when: (gitea_enabled | default(False))
+  tags: gitea
+
+- include_tasks: gitlab.yml
+  when: (gitlab_enabled | default(False))
+  tags: gitlab

@@ -1,0 +1,13 @@
+---
+
+- include_tasks: portainer.yml
+  when: (portainer_enabled | default(False))
+  tags: portainer
+
+- include_tasks: heimdall.yml
+  when: (heimdall_enabled | default(False))
+  tags: heimdall
+
+- include_tasks: grafana.yml
+  when: (grafana_enabled | default(False))
+  tags: grafana

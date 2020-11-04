@@ -1,0 +1,27 @@
+---
+
+- name: Create mariadb directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: 0755
+  with_items:
+    - "{{ mariadb_config_directory }}"
+
+- name: mariadb Docker Container
+  docker_container:
+    name: "{{ mariadb_container_name }}"
+    image: "{{ mariadb_container_store }}/{{ mariadb_container_name }}:{{ mariadb_version }}"
+    pull: true
+    volumes:
+      - "{{ mariadb_config_directory }}:/config"
+    ports:
+      - "{{ mariadb_port }}:3306/tcp"
+    env:
+      TZ: "{{ system.timezone }}"
+      PUID: "{{ user_uid | string }}"
+      PGID: "{{ user_gid | string }}"
+      MYSQL_ROOT_PASSWORD: "{{ mariadb_root_password }}"
+    restart_policy: unless-stopped

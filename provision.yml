@@ -3,6 +3,6 @@
 - hosts: vultr1
   user: root
   roles:
-    - rhinocerose.userconfig
+    - userconfig
     - dev-sec.ssh-hardening
     - geerlingguy.ntp

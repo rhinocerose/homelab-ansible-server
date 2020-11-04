@@ -7,3 +7,14 @@ user:
   uid: 1001
   gid: 1001
   pass_hash: '$6$vultrdocker$oHGkUFY6JVskmD7EJXJELmvUqaS59W/pRhmllRlYSQCUH2VP80JcY.HNwJofKLxtSMEhxhiabR6Qyh7q4XZXM.'
+
+portainer_enabled: true
+heimdall_enabled: true
+grafana_enabled: false
+
+bookstack_enabled: true
+plex_enabled: true
+jellyfin_enabled: true
+
+gitlab_enabled: false
+gitea_enabled: false
