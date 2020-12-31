@@ -9,8 +9,8 @@
   - [x] Python dependencies
   - [x] Docker and docker-compose
 - [ ] Monitoring
-  - [x] Heimdall
-  - [x] Portainer
+  - [x] Heimdall (9050)
+  - [x] Portainer (9000)
   - [ ] Prometheus
   - [ ] Grafana
 - [ ] Knowledge Management Systems
