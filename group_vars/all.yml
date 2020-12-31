@@ -228,6 +228,7 @@ base:
     - htop
     - unzip
     - zip
+    - vim
     - tree
     - tmux
     - man-db
