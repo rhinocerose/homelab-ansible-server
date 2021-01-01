@@ -1,8 +1,8 @@
 ---
 
-###
+################################################################
 ### User settings
-###
+################################################################
 user_name: arch
 user_group: arch
 user_shell: /bin/bash
@@ -10,30 +10,30 @@ user_uid: 1000
 user_gid: 1000
 user_pass_hash: '$6$vultr.arch$a41beHtZ6/9A0eHjfII3VyArafuiGSFxXYas.LOR6dehb44EW6V0d.HxwHB5oiMTwXj.I3oE3cB/D8F1QvZFt1'
 
-###
+################################################################
 ### System settings
-###
+################################################################
 system:
   timezone: America/Toronto
   locale: en_US.UTF-8
 
-###
+################################################################
 ### Docker global settings
-###
+################################################################
 docker_app_data: /docker
 
-###
+################################################################
 ### SSH settings
-###
+################################################################
 ssh_setting:
   port: 22
   password_authentication: "no"
   root_login: "no"
   challenge_response_authentication: "no"
 
-###
+################################################################
 ### Traefik
-###
+################################################################
 traefik_container_name: traefik
 traefik_container_store: traefik
 traefik_version: "v1.7"
@@ -50,9 +50,9 @@ traefik_port_http: "80"
 traefik_port_https: "443"
 traefik_port_ui: "8083"
 
-###
+################################################################
 ### MySQL/MariaDB settings
-###
+################################################################
 mysql_root_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           64373533373961643363653535316263396135356361386366326433656537663031316161323766
@@ -71,9 +71,9 @@ mysql_password: !vault |
           3161
 
 
-###
+################################################################
 ### Share Folders
-###
+################################################################
 samba_shares_root: /mnt/
 
 media_downloads: "{{ samba_shares_root }}/downloads"
@@ -81,9 +81,9 @@ media_movies: "{{ samba_shares_root }}/movies"
 media_tv: "{{ samba_shares_root }}/tv/tv"
 media_torrents: "{{ samba_shares_root }}/torrents"
 
-###
+################################################################
 ### Heimdall
-###
+################################################################
 heimdall_enabled: false
 heimdall_container_name: heimdall
 heimdall_container_store: linuxserver
@@ -92,9 +92,9 @@ heimdall_version: latest
 heimdall_port_http: 9050
 heimdall_port_https: 9052
 
-###
+################################################################
 ### Gitea
-###
+################################################################
 gitea_enabled: false
 gitea_container_name: gitea
 gitea_container_store: gitea
@@ -110,9 +110,9 @@ gitea_db_user: gitea
 gitea_db_host: gitea
 gitea_root_password: "{{ mysql_root_password }}"
 
-###
+################################################################
 ### Gitlab
-###
+################################################################
 gitlab_enabled: false
 gitlab_container_name: gitlab-ce
 gitlab_container_store: gitlab
@@ -122,27 +122,27 @@ gitlab_port_http: 4080
 gitlab_port_https: 4043
 gitlab_port_ssh: 4022
 
-###
+################################################################
 ### Dillinger
-###
+################################################################
 dillinger_enabled: false
 dillinger_container_name: dillinger
 dillinger_container_store: linuxserver
 dillinger_version: latest
 dillinger_port: 9902
 
-###
+################################################################
 ### Nextcloud
-###
+################################################################
 nextcloud_enabled: false
 nextcloud_container_name: nextcloud
 nextcloud_container_store: linuxserver
 nextcloud_version: latest
 nextcloud_port: 9983
 
-###
+################################################################
 ### Mariadb
-###
+################################################################
 mariadb_container_name: mariadb
 mariadb_container_store: linuxserver
 mariadb_config_directory: "{{ docker_app_data }}/mariadb"
@@ -150,9 +150,9 @@ mariadb_version: latest
 mariadb_port: 3306
 mariadb_root_password: "{{ mysql_root_password }}"
 
-###
+################################################################
 ### Bookstack
-###
+################################################################
 bookstack_enabled: false
 bookstack_container_name: bookstack
 bookstack_container_store: linuxserver
@@ -167,9 +167,9 @@ bookstack_db_user: bookstack
 bookstack_db_host: bookstack_db
 bookstack_root_password: "{{ mysql_root_password }}"
 
-###
+################################################################
 ### Grafana
-###
+################################################################
 grafana_enabled: false
 grafana_container_name: grafana
 grafana_container_store: grafana
@@ -177,9 +177,9 @@ grafana_config_directory: "{{ docker_app_data }}/grafana"
 grafana_version: latest
 grafana_port: 3000
 
-###
+################################################################
 ### Portainer
-###
+################################################################
 portainer_enabled: false
 portainer_container_name: portainer
 portainer_container_store: portainer
@@ -187,9 +187,9 @@ portainer_config_directory: "{{ docker_app_data }}/portainer"
 portainer_version: latest
 portainer_port: 9000
 
-###
+################################################################
 ### Wallabag
-###
+################################################################
 wallabag_enabled: false
 wallabag_container_name: wallabag
 wallabag_container_store: wallabag
@@ -197,9 +197,9 @@ wallabag_config_directory: "{{ docker_app_data }}/wallabag"
 wallabag_version: latest
 wallabag_port_http: 7780
 
-###
+################################################################
 ### Jellyfin
-###
+################################################################
 jellyfin_enabled: false
 jellyfin_container_name: jellyfin
 jellyfin_container_store: linuxserver
@@ -207,18 +207,18 @@ jellyfin_config_directory: "{{ docker_app_data }}/jellyfin"
 jellyfin_version: latest
 jellyfin_port_http: 1019
 
-###
+################################################################
 ### Plex
-###
+################################################################
 plex_enabled: false
 plex_container_name: plex
 plex_container_store: linuxserver
 plex_config_directory: "{{ docker_app_data }}/plex"
 plex_version: latest
 
-###
+################################################################
 ### Packages
-###
+################################################################
 base:
   packages:
     - git

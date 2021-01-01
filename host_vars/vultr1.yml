@@ -14,8 +14,8 @@ grafana_enabled: true
 
 bookstack_enabled: false
 plex_enabled: false
-jellyfin_enabled: false
+jellyfin_enabled: true
 wallabag_enabled: false
 
 gitlab_enabled: false
-gitea_enabled: true
+gitea_enabled: false
