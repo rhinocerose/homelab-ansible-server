@@ -50,6 +50,8 @@ traefik_port_http: "80"
 traefik_port_https: "443"
 traefik_port_ui: "8083"
 
+external_domain: "example.com"
+
 ################################################################
 ### MySQL/MariaDB settings
 ################################################################
@@ -85,6 +87,7 @@ media_torrents: "{{ samba_shares_root }}/torrents"
 ### Heimdall
 ################################################################
 heimdall_enabled: false
+heimdall_available_externally: false
 heimdall_container_name: heimdall
 heimdall_container_store: linuxserver
 heimdall_config_directory: "{{ docker_app_data }}/heimdall"
@@ -96,6 +99,7 @@ heimdall_port_https: 9052
 ### Gitea
 ################################################################
 gitea_enabled: false
+gitea_available_externally: false
 gitea_container_name: gitea
 gitea_container_store: gitea
 gitea_config_directory: "{{ docker_app_data }}/gitea"
@@ -114,6 +118,7 @@ gitea_root_password: "{{ mysql_root_password }}"
 ### Gitlab
 ################################################################
 gitlab_enabled: false
+gitlab_available_externally: false
 gitlab_container_name: gitlab-ce
 gitlab_container_store: gitlab
 gitlab_config_directory: "{{ docker_app_data }}/gitlab"
@@ -126,6 +131,7 @@ gitlab_port_ssh: 4022
 ### Dillinger
 ################################################################
 dillinger_enabled: false
+dillinger_available_externally: false
 dillinger_container_name: dillinger
 dillinger_container_store: linuxserver
 dillinger_version: latest
@@ -135,6 +141,7 @@ dillinger_port: 9902
 ### Nextcloud
 ################################################################
 nextcloud_enabled: false
+nextcloud_available_externally: false
 nextcloud_container_name: nextcloud
 nextcloud_container_store: linuxserver
 nextcloud_version: latest
@@ -154,6 +161,7 @@ mariadb_root_password: "{{ mysql_root_password }}"
 ### Bookstack
 ################################################################
 bookstack_enabled: false
+bookstack_available_externally: false
 bookstack_container_name: bookstack
 bookstack_container_store: linuxserver
 bookstack_config_directory: "{{ docker_app_data }}/bookstack"
@@ -171,6 +179,7 @@ bookstack_root_password: "{{ mysql_root_password }}"
 ### Grafana
 ################################################################
 grafana_enabled: false
+grafana_available_externally: false
 grafana_container_name: grafana
 grafana_container_store: grafana
 grafana_config_directory: "{{ docker_app_data }}/grafana"
@@ -181,6 +190,7 @@ grafana_port: 3000
 ### Portainer
 ################################################################
 portainer_enabled: false
+portainer_available_externally: false
 portainer_container_name: portainer
 portainer_container_store: portainer
 portainer_config_directory: "{{ docker_app_data }}/portainer"
@@ -191,6 +201,7 @@ portainer_port: 9000
 ### Wallabag
 ################################################################
 wallabag_enabled: false
+wallabag_available_externally: false
 wallabag_container_name: wallabag
 wallabag_container_store: wallabag
 wallabag_config_directory: "{{ docker_app_data }}/wallabag"
@@ -201,6 +212,7 @@ wallabag_port_http: 7780
 ### Jellyfin
 ################################################################
 jellyfin_enabled: false
+jellyfin_available_externally: false
 jellyfin_container_name: jellyfin
 jellyfin_container_store: linuxserver
 jellyfin_config_directory: "{{ docker_app_data }}/jellyfin"
@@ -211,10 +223,24 @@ jellyfin_port_http: 1019
 ### Plex
 ################################################################
 plex_enabled: false
+plex_available_externally: false
 plex_container_name: plex
 plex_container_store: linuxserver
 plex_config_directory: "{{ docker_app_data }}/plex"
 plex_version: latest
+
+################################################################
+### Sonarr
+################################################################
+sonarr_enabled: false
+sonarr_available_externally: "false"
+sonarr_container_name: sonarr
+sonarr_container_store: linuxserver
+sonarr_config_directory: "{{ docker_app_data }}/sonarr"
+sonarr_tv_directory: "{{ tv_root }}"
+sonarr_download_directory: "{{ downloads_root }}"
+sonarr_version: latest
+sonarr_port: "8989"
 
 ################################################################
 ### Packages

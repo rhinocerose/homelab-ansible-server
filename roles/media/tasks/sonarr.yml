@@ -1,0 +1,34 @@
+---
+
+- name: Create sonarr directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: 0755
+  with_items:
+    - "{{ sonarr_config_directory }}"
+
+- name: sonarr Docker Container
+  docker_container:
+    name: "{{ sonarr_container_name }}"
+    image: "{{ sonarr_container_store }}/{{ sonarr_container_name }}:{{ sonarr_version }}"
+    pull: true
+    volumes:
+      - "{{ sonarr_config_directory }}/config:/config:rw"
+      - "{{ media_downloads }}/complete:/downloads:rw"
+      - "{{ media_tv }}:/tv:rw"
+    ports:
+      - "{{ sonarr_port }}:8989"
+    env:
+      TZ: "{{ system.timezone }}"
+      PUID: "{{ user_uid | string }}"
+      PGID: "{{ user_gid | string }}"
+    restart_policy: unless-stopped
+    memory: 1g
+    labels:
+      traefik.backend: "sonarr"
+      traefik.frontend.rule: "Host:sonarr.{{ external_domain }}"
+      traefik.enable: "{{ sonarr_available_externally }}"
+      traefik.port: "8989"
