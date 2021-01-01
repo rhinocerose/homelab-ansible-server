@@ -9,16 +9,16 @@
   - [x] Python dependencies
   - [x] Docker and docker-compose
 - [ ] Monitoring
-  - [x] Heimdall
-  - [x] Portainer
+  - [x] Heimdall (9050)
+  - [x] Portainer (9000)
   - [ ] Prometheus
   - [ ] Grafana
 - [ ] Knowledge Management Systems
   - [x] Bookstack
   - [ ] OpenEats
 - [ ] Media
-  - [ ] Plex
-  - [ ] Jellyfin
+  - [x] Plex
+  - [x] Jellyfin
 
 # ansible-template
 A template structure for Ansible projects, adhering to [best practices](http://docs.ansible.com/ansible/latest/playbooks_best_practices.html#directory-layout)
