@@ -5,7 +5,7 @@
     name: '*'
     state: latest
 
-- name: Add anzen group
+- name: Add sudoers group
   group:
     name: "{{ user.name }}"
     state: present
