@@ -5,10 +5,10 @@ all:
     servers:
       hosts:
         vultr1:
-          ansible_host: 107.191.41.172
-    workstations:
-      hosts:
-        htpc:
-          ansible_host: 192.168.1.8
+          ansible_host: 155.138.211.60
+    # workstations:
+    #   hosts:
+    #     htpc:
+    #       ansible_host: 192.168.1.8
         # b53:
         #   ansible_host: 192.168.1.100

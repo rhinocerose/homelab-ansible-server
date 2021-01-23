@@ -54,6 +54,7 @@ Create mariadb directories	roles/docker/tasks/mariadb.yml	/^- name: Create maria
 Create mariadb directories	roles/media/tasks/mariadb.yml	/^- name: Create mariadb directories$/;"	p
 Create plex directories	roles/media/tasks/plex.yml	/^- name: Create plex directories$/;"	p
 Create portainer directories	roles/monitoring/tasks/portainer.yml	/^- name: Create portainer directories$/;"	p
+Create sonarr directories	roles/media/tasks/sonarr.yml	/^- name: Create sonarr directories$/;"	p
 Delete existing docker-compose version if it's different.	roles/geerlingguy.docker/tasks/docker-compose.yml	/^- name: Delete existing docker-compose version if it's different.$/;"	p
 Dependencies	roles/geerlingguy.docker/README.md	/^## Dependencies$/;"	s	chapter:Ansible Role: Docker
 Dependencies	roles/geerlingguy.ntp/README.md	/^## Dependencies$/;"	s	chapter:Ansible Role: NTP
@@ -234,6 +235,7 @@ set macs according to openssh-version if openssh >= 7.6	roles/dev-sec.ssh-harden
 set macs for Enterprise Linux >= 6.5 (openssh 5.3 with backports)	roles/dev-sec.ssh-hardening/tasks/crypto_macs.yml	/^- name: set macs for Enterprise Linux >= 6.5 (openssh 5.3 with backports)$/;"	p
 set ssh CA pub keys	roles/dev-sec.ssh-hardening/tasks/ca_keys_and_principals.yml	/^- name: set ssh CA pub keys$/;"	p
 set ssh authorized principals	roles/dev-sec.ssh-hardening/tasks/ca_keys_and_principals.yml	/^- name: set ssh authorized principals$/;"	p
+sonarr Docker Container	roles/media/tasks/sonarr.yml	/^- name: sonarr Docker Container$/;"	p
 ssh-hardening (Ansible Role)	roles/dev-sec.ssh-hardening/README.md	/^# ssh-hardening (Ansible Role)$/;"	c
 test_hosts_file	roles/geerlingguy.ntp/molecule/default/tests/test_default.py	/^def test_hosts_file(host):$/;"	f
 testinfra_hosts	roles/geerlingguy.ntp/molecule/default/tests/test_default.py	/^testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner($/;"	v
