@@ -253,6 +253,17 @@ radarr_version: latest
 radarr_port: "7878"
 
 ################################################################
+### Jackett
+################################################################
+jackett_enabled: false
+jackett_available_externally: false
+jackett_container_name: jackett
+jackett_container_store: linuxserver
+jackett_config_directory: "{{ docker_app_data }}/jackett"
+jackett_version: latest
+jackett_port: "9117"
+
+################################################################
 ### Couchpotato
 ################################################################
 couchpotato_enabled: false
