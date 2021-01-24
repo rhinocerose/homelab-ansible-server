@@ -16,7 +16,7 @@
     image: "{{ jellyfin_container_store }}/{{ jellyfin_container_name }}:{{ jellyfin_version }}"
     pull: true
     volumes:
-      - "{{ jellyfin_config_directory }}/library:/config"
+      - "{{ jellyfin_config_directory }}/config:/config"
       # - "{{ docker_app_data }}/{{ jellyfin_container_name }}/transcode:/transcode"
       - "{{ media_tv }}:/data/tv"
       - "{{ media_movies }}:/data/movies"
