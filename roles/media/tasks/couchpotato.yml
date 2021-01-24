@@ -21,7 +21,7 @@
       - "{{ media_torrents }}:/torrents:rw"
       - "{{ media_movies }}:/data/movies:rw"
     ports:
-      - "{{ couchpotato_port_http }}:5050"
+      - "{{ couchpotato_port }}:5050"
     env:
       TZ: "{{ system.timezone }}"
       PUID: "{{ user_uid | string }}"

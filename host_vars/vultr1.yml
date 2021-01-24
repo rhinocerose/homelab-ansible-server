@@ -16,6 +16,9 @@ bookstack_enabled: false
 plex_enabled: false
 jellyfin_enabled: true
 sonarr_enabled: true
+radarr_enabled: true
+sickchill_enabled: true
+couchpotato_enabled: true
 wallabag_enabled: false
 
 gitlab_enabled: false

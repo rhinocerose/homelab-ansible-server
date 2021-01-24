@@ -20,7 +20,7 @@
       - "{{ media_downloads }}:/downloads:rw"
       - "{{ media_tv }}:/tv:rw"
     ports:
-      - "{{ sickchill_port_http }}:8081"
+      - "{{ sickchill_port }}:8081"
     env:
       TZ: "{{ system.timezone }}"
       PUID: "{{ user_uid | string }}"

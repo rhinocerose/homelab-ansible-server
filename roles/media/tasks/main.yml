@@ -19,3 +19,15 @@
 - include_tasks: sonarr.yml
   when: (sonarr_enabled | default(False))
   tags: sonarr
+
+- include_tasks: radarr.yml
+  when: (radarr_enabled | default(False))
+  tags: radarr
+
+- include_tasks: sickchill.yml
+  when: (sickchill_enabled | default(False))
+  tags: sickchill
+
+- include_tasks: couchpotato.yml
+  when: (couchpotato_enabled | default(False))
+  tags: couchpotato
