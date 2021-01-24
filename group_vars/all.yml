@@ -246,11 +246,22 @@ sonarr_port: "8989"
 ################################################################
 couchpotato_enabled: false
 couchpotato_available_externally: false
-couchpotato_container_name: sonarr
+couchpotato_container_name: couchpotato
 couchpotato_container_store: linuxserver
-couchpotato_config_directory: "{{ docker_app_data }}/sonarr"
+couchpotato_config_directory: "{{ docker_app_data }}/couchpotato"
 couchpotato_version: latest
 couchpotato_port: "5050"
+
+################################################################
+### Sickchill
+################################################################
+sickchill_enabled: false
+sickchill_available_externally: false
+sickchill_container_name: sickchill
+sickchill_container_store: linuxserver
+sickchill_config_directory: "{{ docker_app_data }}/sickchill"
+sickchill_version: latest
+sickchill_port: "8081"
 
 ################################################################
 ### Packages

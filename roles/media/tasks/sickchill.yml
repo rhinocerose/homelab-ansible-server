@@ -1,0 +1,28 @@
+---
+
+- name: Create sickchill directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: 0755
+  with_items:
+    - "{{ sickchill_config_directory }}"
+
+- name: sickchill Docker Container
+  docker_container:
+    name: "{{ sickchill_container_name }}"
+    image: "{{ sickchill_container_store }}/{{ sickchill_container_name }}:{{ sickchill_version }}"
+    pull: true
+    volumes:
+      - "{{ sickchill_config_directory }}/config:/config"
+      - "{{ media_downloads }}:/downloads:rw"
+      - "{{ media_tv }}:/tv:rw"
+    ports:
+      - "{{ sickchill_port_http }}:8081"
+    env:
+      TZ: "{{ system.timezone }}"
+      PUID: "{{ user_uid | string }}"
+      PGID: "{{ user_gid | string }}"
+    restart_policy: unless-stopped

@@ -46,6 +46,7 @@ Create Traefik Directories	roles/traefik/tasks/traefik.yml	/^- name: Create Trae
 Create Wallabag Directories	roles/media/tasks/wallabag.yml	/^- name: Create Wallabag Directories$/;"	p
 Create bookstack_directories	roles/media/tasks/bookstack.yml	/^- name: Create bookstack_directories$/;"	p
 Create clock file if it doesn't exist.	roles/geerlingguy.ntp/tasks/clock-rhel-6.yml	/^- name: Create clock file if it doesn't exist.$/;"	p
+Create couchpotato directories	roles/media/tasks/couchpotato.yml	/^- name: Create couchpotato directories$/;"	p
 Create docker directory	roles/docker/tasks/docker.yml	/^- name: Create docker directory$/;"	p
 Create docker network	roles/docker/tasks/docker.yml	/^- name: Create docker network$/;"	p
 Create heimdall directories	roles/monitoring/tasks/heimdall.yml	/^- name: Create heimdall directories$/;"	p
@@ -184,6 +185,7 @@ check if ssh_password module is already installed	roles/dev-sec.ssh-hardening/ta
 check if {{ sshd_moduli_file }} contains weak DH parameters	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: check if {{ sshd_moduli_file }} contains weak DH parameters$/;"	p
 community	roles/userconfig/files/etc/pacman.conf	/^[community]$/;"	s
 core	roles/userconfig/files/etc/pacman.conf	/^[core]$/;"	s
+couchpotato Docker Container	roles/media/tasks/couchpotato.yml	/^- name: couchpotato Docker Container$/;"	p
 create revoked_keys and set permissions to root/600	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: create revoked_keys and set permissions to root\/600$/;"	p
 create ssh authorized principals directories	roles/dev-sec.ssh-hardening/tasks/ca_keys_and_principals.yml	/^- name: create ssh authorized principals directories$/;"	p
 create ssh_config and set permissions to root/644	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: create ssh_config and set permissions to root\/644$/;"	p
