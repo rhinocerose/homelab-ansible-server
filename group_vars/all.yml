@@ -233,7 +233,7 @@ plex_version: latest
 ### Sonarr
 ################################################################
 sonarr_enabled: false
-sonarr_available_externally: "false"
+sonarr_available_externally: false
 sonarr_container_name: sonarr
 sonarr_container_store: linuxserver
 sonarr_config_directory: "{{ docker_app_data }}/sonarr"

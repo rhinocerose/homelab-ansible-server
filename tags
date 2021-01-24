@@ -13,10 +13,10 @@ Add Docker apt key.	roles/geerlingguy.docker/tasks/setup-Debian.yml	/^- name: Ad
 Add Docker repository.	roles/geerlingguy.docker/tasks/setup-Debian.yml	/^- name: Add Docker repository.$/;"	p
 Add Docker repository.	roles/geerlingguy.docker/tasks/setup-RedHat.yml	/^- name: Add Docker repository.$/;"	p
 Add SSH public key for user	roles/userconfig/tasks/main.yml	/^- name: Add SSH public key for user$/;"	p
-Add anzen group	roles/userconfig/tasks/main.yml	/^- name: Add anzen group$/;"	p
 Add local user	roles/userconfig/tasks/main.yml	/^- name: Add local user$/;"	p
 Add shim to ensure Docker can start in all environments.	roles/geerlingguy.docker/tasks/docker-1809-shim.yml	/^- name: Add shim to ensure Docker can start in all environments.$/;"	p
 Add sudoer rule for local user	roles/userconfig/tasks/main.yml	/^- name: Add sudoer rule for local user$/;"	p
+Add sudoers group	roles/userconfig/tasks/main.yml	/^- name: Add sudoers group$/;"	p
 Add tests	roles/dev-sec.ssh-hardening/CONTRIBUTING.md	/^### Add tests$/;"	S	section:Contributor Guideline""Expectations
 Ansible Role: Docker	roles/geerlingguy.docker/README.md	/^# Ansible Role: Docker$/;"	c
 Ansible Role: NTP	roles/geerlingguy.ntp/README.md	/^# Ansible Role: NTP$/;"	c

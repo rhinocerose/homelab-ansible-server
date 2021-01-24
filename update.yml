@@ -9,5 +9,5 @@
     - docker
     - base-packages
     - monitoring
-    # - media
-    # - git-hosting
+    - media
+    - git-hosting

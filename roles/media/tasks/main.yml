@@ -15,3 +15,7 @@
 - include_tasks: wallabag.yml
   when: (wallabag_enabled | default(False))
   tags: wallabag
+
+- include_tasks: sonarr.yml
+  when: (sonarr_enabled | default(False))
+  tags: sonarr
