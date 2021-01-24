@@ -22,9 +22,6 @@
       - "{{ media_movies }}:/data/movies"
     ports:
       - "{{ jellyfin_port_http }}:8096"
-      # - 8920:8920 #optional
-      # - 7359:7359/udp #optional
-      # - 1900:1900/udp #optional
     env:
       TZ: "{{ system.timezone }}"
       PUID: "{{ user_uid | string }}"
