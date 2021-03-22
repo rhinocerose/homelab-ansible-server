@@ -21,7 +21,7 @@
 
 # Next two based on: https://github.com/palcu/dotfiles/blob/master/playbooks/roles/common/tasks/main.yml
 - name: Symlink my dotfiles
-  file: src=~/dotfiles/home/{{ item }}
+  file: src=~/.dotfiles/config/{{ item }}
         dest=~/{{ item }}
         state=link
         force=yes
