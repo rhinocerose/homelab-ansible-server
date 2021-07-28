@@ -21,6 +21,7 @@ system:
 ### Docker global settings
 ################################################################
 docker_app_data: /docker
+docker_image_directory: "{{ docker_app_data }}/data"
 
 ################################################################
 ### SSH settings
@@ -38,7 +39,7 @@ traefik_container_name: traefik
 traefik_container_store: traefik
 traefik_version: "v1.7"
 traefik_docker_image: traefik:v1.7
-traefik_config_directory: "{{ docker_home }}/traefik"
+traefik_config_directory: "{{ docker_app_data }}/traefik"
 traefik_debug: "false"
 # External Access
 # Traefik will allow access to certain applications externally. To enable this you'll either a domain name that points to your
@@ -229,6 +230,17 @@ plex_container_store: linuxserver
 plex_config_directory: "{{ docker_app_data }}/plex"
 plex_version: latest
 plex_port: "32400"
+
+################################################################
+### NZBGet
+################################################################
+nzbget_enabled: false
+nzbget_available_externally: false
+nzbget_container_name: nzbget
+nzbget_container_store: linuxserver
+nzbget_config_directory: "{{ docker_app_data }}/nzbget"
+nzbget_version: latest
+nzbget_port: "6789"
 
 ################################################################
 ### Sonarr

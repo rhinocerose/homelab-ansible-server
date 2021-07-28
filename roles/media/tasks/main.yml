@@ -31,3 +31,11 @@
 - include_tasks: couchpotato.yml
   when: (couchpotato_enabled | default(False))
   tags: couchpotato
+
+- include_tasks: jackett.yml
+  when: (jackett_enabled | default(False))
+  tags: jackett
+
+- include_tasks: nzbget.yml
+  when: (nzbget_enabled | default(False))
+  tags: nzbget

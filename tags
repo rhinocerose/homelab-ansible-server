@@ -55,6 +55,7 @@ Create mariadb directories	roles/docker/tasks/mariadb.yml	/^- name: Create maria
 Create mariadb directories	roles/media/tasks/mariadb.yml	/^- name: Create mariadb directories$/;"	p
 Create plex directories	roles/media/tasks/plex.yml	/^- name: Create plex directories$/;"	p
 Create portainer directories	roles/monitoring/tasks/portainer.yml	/^- name: Create portainer directories$/;"	p
+Create radarr directories	roles/media/tasks/radarr.yml	/^- name: Create radarr directories$/;"	p
 Create sickchill directories	roles/media/tasks/sickchill.yml	/^- name: Create sickchill directories$/;"	p
 Create sonarr directories	roles/media/tasks/sonarr.yml	/^- name: Create sonarr directories$/;"	p
 Delete existing docker-compose version if it's different.	roles/geerlingguy.docker/tasks/docker-compose.yml	/^- name: Delete existing docker-compose version if it's different.$/;"	p
@@ -212,6 +213,7 @@ parse openssh-version	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: 
 plex Docker Container	roles/media/tasks/plex.yml	/^- name: plex Docker Container$/;"	p
 portainer Docker Container	roles/monitoring/tasks/portainer.yml	/^- name: portainer Docker Container$/;"	p
 provision	Makefile	/^provision:$/;"	t
+radarr Docker Container	roles/media/tasks/radarr.yml	/^- name: radarr Docker Container$/;"	p
 remove all small primes	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: remove all small primes$/;"	p
 remove selinux-policy when Pam is used, because Allowing sshd to read the shadow file directly is considered a potential security risk	roles/dev-sec.ssh-hardening/tasks/selinux.yml	/^- name: remove selinux-policy when Pam is used, because Allowing sshd to read the shadow file di/;"	p
 restart docker	roles/geerlingguy.docker/handlers/main.yml	/^- name: restart docker$/;"	p

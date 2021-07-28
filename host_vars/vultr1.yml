@@ -17,7 +17,9 @@ plex_enabled: false
 jellyfin_enabled: true
 sonarr_enabled: true
 radarr_enabled: true
+jackett_enabled: true
 sickchill_enabled: true
+nzbget_enabled: true
 couchpotato_enabled: true
 wallabag_enabled: false
 

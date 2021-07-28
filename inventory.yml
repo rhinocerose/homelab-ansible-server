@@ -5,7 +5,7 @@ all:
     servers:
       hosts:
         vultr1:
-          ansible_host: 66.42.90.205
+          ansible_host: 155.138.174.119
     # workstations:
     #   hosts:
     #     htpc:
