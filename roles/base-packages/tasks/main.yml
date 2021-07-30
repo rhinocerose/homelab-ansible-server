@@ -17,3 +17,27 @@
   apt:
     name: "{{ base.packages }}"
     state: latest
+
+
+# Next two based on: https://github.com/palcu/dotfiles/blob/master/playbooks/roles/common/tasks/main.yml
+- name: Symlink my dotfiles
+  file: src=~/.dotfiles/config/{{ item }}
+        dest=~/{{ item }}
+        state=link
+        force=yes
+  with_items:
+    - .vimrc
+    - .zshrc
+    - .zpreztorc
+    - .zlogin
+    - .zlogout
+    - .zshenv
+    - .inputrc
+    - .gemrc
+    - .gitignore
+    - .gitconfig
+    - .pythonrc
+    - .tmux.conf
+    
+- name: Install/update VIM plugins
+  command: vim +PluginInstall! +qall    
