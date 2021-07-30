@@ -50,9 +50,11 @@ Create couchpotato directories	roles/media/tasks/couchpotato.yml	/^- name: Creat
 Create docker directory	roles/docker/tasks/docker.yml	/^- name: Create docker directory$/;"	p
 Create docker network	roles/docker/tasks/docker.yml	/^- name: Create docker network$/;"	p
 Create heimdall directories	roles/monitoring/tasks/heimdall.yml	/^- name: Create heimdall directories$/;"	p
+Create jackett directories	roles/media/tasks/jackett.yml	/^- name: Create jackett directories$/;"	p
 Create jellyfin directories	roles/media/tasks/jellyfin.yml	/^- name: Create jellyfin directories$/;"	p
 Create mariadb directories	roles/docker/tasks/mariadb.yml	/^- name: Create mariadb directories$/;"	p
 Create mariadb directories	roles/media/tasks/mariadb.yml	/^- name: Create mariadb directories$/;"	p
+Create nzbget directories	roles/media/tasks/nzbget.yml	/^- name: Create nzbget directories$/;"	p
 Create plex directories	roles/media/tasks/plex.yml	/^- name: Create plex directories$/;"	p
 Create portainer directories	roles/monitoring/tasks/portainer.yml	/^- name: Create portainer directories$/;"	p
 Create radarr directories	roles/media/tasks/radarr.yml	/^- name: Create radarr directories$/;"	p
@@ -99,6 +101,7 @@ Install Docker Compose (if configured).	roles/geerlingguy.docker/tasks/docker-co
 Install Docker.	roles/geerlingguy.docker/tasks/main.yml	/^- name: Install Docker.$/;"	p
 Install base packages	roles/base-packages/tasks/main.yml	/^- name: Install base packages$/;"	p
 Install docker network resources	roles/docker/tasks/docker.yml	/^- name: Install docker network resources$/;"	p
+Install/update VIM plugins	roles/base-packages/tasks/main.yml	/^- name: Install\/update VIM plugins$/;"	p
 Inventory	README.md	/^### Inventory$/;"	S	section:ansible-template""How to Use
 Library	README.md	/^### Library$/;"	S	section:ansible-template""How to Use
 License	roles/geerlingguy.docker/README.md	/^## License$/;"	s	chapter:Ansible Role: Docker
@@ -132,6 +135,7 @@ Set timezone	roles/geerlingguy.ntp/tasks/main.yml	/^- name: Set timezone$/;"	p
 SigLevel	roles/userconfig/files/etc/pacman.conf	/^SigLevel    = Required DatabaseOptional$/;"	k	section:options
 SigLevel	roles/userconfig/files/etc/pacman.conf	/^SigLevel = Optional TrustAll$/;"	k	section:rhinocerose
 Summary	README.md	/^### Summary$/;"	S	section:ansible-template""How to Use
+Symlink my dotfiles	roles/base-packages/tasks/main.yml	/^- name: Symlink my dotfiles$/;"	p
 Template Traefik config.toml	roles/traefik/tasks/traefik.yml	/^- name: Template Traefik config.toml$/;"	p
 Testing with Docker	roles/dev-sec.ssh-hardening/README.md	/^### Testing with Docker$/;"	S	section:ssh-hardening (Ansible Role)""Local Testing
 Testing with Virtualbox	roles/dev-sec.ssh-hardening/README.md	/^### Testing with Virtualbox$/;"	S	section:ssh-hardening (Ansible Role)""Local Testing
@@ -203,11 +207,13 @@ heimdall Docker Container	roles/monitoring/tasks/heimdall.yml	/^- name: heimdall
 include selinux specific tasks	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: include selinux specific tasks$/;"	p
 include tasks to setup ca keys and principals	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: include tasks to setup ca keys and principals$/;"	p
 install selinux dependencies when selinux is installed	roles/dev-sec.ssh-hardening/tasks/selinux.yml	/^- name: install selinux dependencies when selinux is installed$/;"	p
+jackett Docker Container	roles/media/tasks/jackett.yml	/^- name: jackett Docker Container$/;"	p
 jellyfin Docker Container	roles/media/tasks/jellyfin.yml	/^- name: jellyfin Docker Container$/;"	p
 mariadb Docker Container	roles/docker/tasks/mariadb.yml	/^- name: mariadb Docker Container$/;"	p
 mariadb Docker Container	roles/media/tasks/bookstack.yml	/^- name: mariadb Docker Container$/;"	p
 mariadb Docker Container	roles/media/tasks/mariadb.yml	/^- name: mariadb Docker Container$/;"	p
 multilib	roles/userconfig/files/etc/pacman.conf	/^[multilib]$/;"	s
+nzbget Docker Container	roles/media/tasks/nzbget.yml	/^- name: nzbget Docker Container$/;"	p
 options	roles/userconfig/files/etc/pacman.conf	/^[options]$/;"	s
 parse openssh-version	roles/dev-sec.ssh-hardening/tasks/hardening.yml	/^- name: parse openssh-version$/;"	p
 plex Docker Container	roles/media/tasks/plex.yml	/^- name: plex Docker Container$/;"	p
