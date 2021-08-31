@@ -20,4 +20,3 @@
     - role: git-hosting
       tags:
         - git-hosting
-      when: (gitea_enabled | default(False))
