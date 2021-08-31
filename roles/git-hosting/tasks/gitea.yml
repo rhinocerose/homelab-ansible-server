@@ -4,8 +4,8 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: arch
-    group: arch
+    owner: git
+    group: git
     recurse: yes
   with_items:
     - "{{ gitea_config_directory }}"
