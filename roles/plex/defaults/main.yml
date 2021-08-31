@@ -8,8 +8,8 @@ plex_container_store: linuxserver
 plex_version: latest
 
 # uid / gid
-plex_user_id: "{{ user_uid }}"
-plex_group_id: "{{ user_gid }}"
+plex_uid: "{{ user_uid }}"
+plex_gid: "{{ user_gid }}"
 
 # Directories
 plex_config_directory: "{{ docker_app_data }}/{{ plex_container_name }}/config"
