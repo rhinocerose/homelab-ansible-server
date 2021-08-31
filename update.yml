@@ -4,10 +4,20 @@
   user: arch
   become: yes
   roles:
-    - geerlingguy.docker
-    - base-packages
-    - docker
-    - base-packages
-    - monitoring
-    - media
-    - git-hosting
+    - role: base-packages
+    - role: geerlingguy.docker
+      tags: 
+        - docker
+    - role: docker
+      tags: 
+        - docker
+    - role: monitoring
+      tags:
+        - monitoring
+    - role: media
+      tags: 
+        - media
+    - role: git-hosting
+      tags:
+        - git-hosting
+      when: (gitea_enabled | default(False))
