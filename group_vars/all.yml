@@ -302,10 +302,11 @@ sickchill_port: "8081"
 ################################################################
 base:
   packages:
-    - git
-    - curl
     - aria2
     - bash-completion
+    - coreutils
+    - curl
+    - git
     - htop
     - unzip
     - zip
@@ -313,9 +314,10 @@ base:
     - tree
     - tmux
     - man-db
-    - coreutils
+    - neofetch
     - python3
     - python3-pip
+    - xcape
 
 server:
   packages:
@@ -323,4 +325,5 @@ server:
 
 workstation:
   packages:
+    - make
   fonts:
