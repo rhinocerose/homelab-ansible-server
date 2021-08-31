@@ -4,3 +4,6 @@
   
 - name: geerlingguy.ntp
   version: 2.3.0
+
+- name: dev-sec.ssh-hardening
+  version: 9.7.0
