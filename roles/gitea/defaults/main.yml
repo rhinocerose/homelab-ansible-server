@@ -1,13 +1,22 @@
 ---
 gitea_enabled: false
 gitea_available_externally: false
+
+# Docker Image
 gitea_container_name: gitea
 gitea_container_store: gitea
-gitea_config_directory: "{{ docker_app_data }}/gitea"
 gitea_version: latest
+
+# uid / gid
+gitea_uid: "1309"
+gitea_gid: "1309"
+
+gitea_config_directory: "{{ docker_app_data }}/gitea"
+gitea_db_config_directory: "{{ docker_app_data }}/gitea/mysql"
+
 gitea_port_http: 3001
 gitea_port_ssh: 222
-gitea_db_config_directory: "{{ docker_app_data }}/gitea/mysql"
+
 gitea_db_container: gitea-db
 gitea_db_root_password: "{{ mysql_root_password }}"
 gitea_db_name: gitea
