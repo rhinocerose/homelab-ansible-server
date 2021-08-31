@@ -8,7 +8,8 @@
     group: "{{ user_name }}"
     mode: 0755
   with_items:
-    - "{{ docker_app_data }}/{{ plex_container_name }}"
+    - "{{ plex_config_directory }}"
+    - "{{ plex_logs }}"
 
 - name: Plex Docker Container
   docker_container:
