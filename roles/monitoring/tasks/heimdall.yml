@@ -3,13 +3,13 @@
 - name: Create Heimdall group
   group:
     name: heimdall
-    gid: "{{ heimdall_group_id }}"
+    gid: "{{ heimdall_gid }}"
     state: present
 
 - name: Create Heimdall user
   user:
     name: heimdall
-    uid: "{{ heimdall_user_id }}"
+    uid: "{{ heimdall_uid }}"
     state: present
     system: yes
     update_password: on_create
