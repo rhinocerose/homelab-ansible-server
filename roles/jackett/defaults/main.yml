@@ -1,3 +1,4 @@
+---
 jackett_enabled: false
 jackett_available_externally: false
 jackett_container_name: jackett
