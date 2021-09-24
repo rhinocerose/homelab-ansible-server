@@ -24,3 +24,5 @@ plex_tv_permissions: "rw"
 
 # Ports
 plex_port: "32400"
+plex_hostname: "plex"
+plex_memory: 2g
