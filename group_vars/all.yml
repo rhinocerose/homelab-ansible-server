@@ -38,10 +38,11 @@ ssh_setting:
 ################################################################
 traefik_container_name: traefik
 traefik_container_store: traefik
-traefik_version: "v1.7"
-traefik_docker_image: traefik:v1.7
+traefik_version: "v2.4"
+traefik_docker_image: traefik:v2.4
 traefik_config_directory: "{{ docker_app_data }}/traefik"
 traefik_debug: "false"
+traefik_log_level: "INFO"
 # External Access
 # Traefik will allow access to certain applications externally. To enable this you'll either a domain name that points to your
 # home static IP address, the cloudflare with the cloudflare_ddns dynamic DNS container enabled, or use a dynamic DNS provider like no-ip.
@@ -51,6 +52,21 @@ traefik_enabled: false
 traefik_port_http: "80"
 traefik_port_https: "443"
 traefik_port_ui: "8083"
+
+
+# find the relevant name and environment variables for your DNS provider at https://go-acme.github.io/lego/dns/
+traefik_dns_provider: cloudflare
+traefik_environment_variables:
+  CF_DNS_API_TOKEN: "abcdabcd123412341234"
+
+# Ansible-NAS requests a wildcard certificate for your domain, so there should be no reason to have to use the staging
+# letsencrypt acme server. If you do want to flip between staging/production, you might need to stop Traefik and clear
+# the "{{ docker_home }}/traefik" after changing this setting.
+# traefik_acme_server: "https://acme-staging-v02.api.letsencrypt.org/directory" # staging
+traefik_acme_server: "https://acme-v02.api.letsencrypt.org/directory" # production
+
+# specs
+traefik_memory: 1g
 
 external_domain: "example.com"
 
@@ -94,8 +110,12 @@ heimdall_container_name: heimdall
 heimdall_container_store: linuxserver
 heimdall_config_directory: "{{ docker_app_data }}/heimdall"
 heimdall_version: latest
-heimdall_port_http: 9050
-heimdall_port_https: 9052
+heimdall_port_http: 10080
+heimdall_port_https: 10443
+heimdall_hostname: heimdall
+heimdall_uid: "1310"
+heimdall_gid: "1310"
+heimdall_memory: 1g
 
 ################################################################
 ### Gitea
@@ -108,6 +128,9 @@ gitea_config_directory: "{{ docker_app_data }}/gitea"
 gitea_version: latest
 gitea_port_http: 3001
 gitea_port_ssh: 222
+gitea_hostname: "gitea"
+gitea_memory: 1g
+gitea_mysql_memory: 1g
 gitea_db_config_directory: "{{ docker_app_data }}/gitea/mysql"
 gitea_db_container: gitea-db
 gitea_db_root_password: "{{ mysql_root_password }}"
