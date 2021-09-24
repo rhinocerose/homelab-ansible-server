@@ -7,3 +7,6 @@
 
 - name: dev-sec.ssh-hardening
   version: 9.7.0
+
+- name: bertvv.samba
+  version: v2.7.1
