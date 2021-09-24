@@ -1,16 +1,32 @@
 ---
 
+- name: Create Heimdall group
+  group:
+    name: heimdall
+    gid: "{{ heimdall_group_id }}"
+    state: present
+
+- name: Create Heimdall user
+  user:
+    name: heimdall
+    uid: "{{ heimdall_user_id }}"
+    state: present
+    system: yes
+    update_password: on_create
+    create_home: no
+    group: heimdall
+    
 - name: Create heimdall directories
   file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ user_name }}"
-    group: "{{ user_name }}"
+    owner: heimdall
+    group: heimdall
     mode: 0755
   with_items:
     - "{{ heimdall_config_directory }}"
 
-- name: heimdall Docker Container
+- name: Install heimdall Docker Container
   docker_container:
     name: "{{ heimdall_container_name }}"
     image: "{{ heimdall_container_store }}/{{ heimdall_container_name }}:{{ heimdall_version }}"
@@ -19,10 +35,18 @@
       - "{{ heimdall_config_directory }}:/config"
       - "{{ docker_app_data }}/shared:/shared"
     ports:
-      - "{{ heimdall_port_http }}:80/tcp"
-      - "{{ heimdall_port_https }}:443/tcp"
+      - "{{ heimdall_port_http }}:80"
+      - "{{ heimdall_port_https }}:443"
     env:
       TZ: "{{ system.timezone }}"
-      PUID: "{{ user_uid | string }}"
-      PGID: "{{ user_gid | string }}"
+      PUID: "{{ heimdall_user_id | string }}"
+      PGID: "{{ heimdall_user_id | string }}"
     restart_policy: unless-stopped
+    memory: "{{ heimdall_memory }}"
+    labels:
+      traefik.enable: "{{ heimdall_available_externally }}"
+      traefik.http.routers.heimdall.rule: "Host(`{{ heimdall_hostname }}.{{ external_domain }}`)"
+      traefik.http.routers.heimdall.tls.certresolver: "letsencrypt"
+      traefik.http.routers.heimdall.tls.domains[0].main: "{{ external_domain }}"
+      traefik.http.routers.heimdall.tls.domains[0].sans: "*.{{ external_domain }}"
+      traefik.http.services.heimdall.loadbalancer.server.port: "80"
