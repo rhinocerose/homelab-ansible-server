@@ -30,7 +30,7 @@
     memory: "{{ couchpotato_memory }}"
     labels:
       traefik.enable: "{{ couchpotato_available_externally }}"
-      traefik.http.routers.couchpotato.rule: "Host(`couchpotato.{{ external_domain }}`)"
+      traefik.http.routers.couchpotato.rule: "Host(`{{ couchpotato_hostname }}.{{ external_domain }}`)"
       traefik.http.routers.couchpotato.tls.certresolver: "letsencrypt"
       traefik.http.routers.couchpotato.tls.domains[0].main: "{{ external_domain }}"
       traefik.http.routers.couchpotato.tls.domains[0].sans: "*.{{ external_domain }}"
