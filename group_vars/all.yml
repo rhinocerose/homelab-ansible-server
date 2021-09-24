@@ -9,6 +9,7 @@ user_shell: /bin/bash
 user_uid: 1000
 user_gid: 1000
 user_pass_hash: '$6$vultr.arch$a41beHtZ6/9A0eHjfII3VyArafuiGSFxXYas.LOR6dehb44EW6V0d.HxwHB5oiMTwXj.I3oE3cB/D8F1QvZFt1'
+user_email: 'blah@blah.com'
 
 ################################################################
 ### System settings
