@@ -8,8 +8,8 @@ jellyfin_container_store: linuxserver
 jellyfin_version: latest
 
 # uid / gid
-jellyfin_uid: "{{ user_uid }}"
-jellyfin_gid: "{{ user_gid }}"
+jellyfin_uid: "1315"
+jellyfin_gid: "1315"
 
 # Directories
 jellyfin_config_directory: "{{ docker_app_data }}/{{ jellyfin_container_name }}/config"
@@ -19,6 +19,9 @@ jellyfin_tv_directory: "{{ media_tv }}"
 # Permissions
 jellyfin_movies_permissions: "rw"
 jellyfin_tv_permissions: "rw"
+
+jellyfin_hostname: "jellyfin"
+jellyfin_memory: 2g
 
 # Ports
 jellyfin_port_http: "8896"
