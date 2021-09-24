@@ -28,7 +28,7 @@
       MYSQL_PASSWORD: "{{ mariadb_root_password }}"
       MYSQL_DATABASE: "{{ bookstack_db_name }}"
       MYSQL_ROOT_PASSWORD: "{{ mariadb_root_password }}"
-      restart_policy: unless-stopped
+    restart_policy: unless-stopped
 
 - name: bookstack_Docker Container
   docker_container:
