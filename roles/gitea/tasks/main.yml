@@ -1,5 +1,21 @@
 ---
 
+- name: Create Gitea group account
+  group:
+    name: git
+    gid: "{{ gitea_gid | string }}"
+    state: present
+
+- name: Create Gitea user account
+  user:
+    name: git
+    uid: "{{ gitea_uid | string }}"
+    state: present
+    system: yes
+    update_password: on_create
+    create_home: no
+    group: git
+    
 - name: Create Gitea Directories
   file:
     path: "{{ item }}"
@@ -43,7 +59,7 @@
       MYSQL_PASSWORD: "gitea"
       MYSQL_ROOT_PASSWORD: "gitea"
     restart_policy: unless-stopped
-    memory: 1g
+    memory: "{{ gitea_mysql_memory }}"
 
 - name: Create Gitea container
   docker_container:
@@ -70,3 +86,11 @@
       # SSH_PORT: "{{ gitea_port_ssh }}"
       # ROOT_URL: "http://{{ ansible_nas_hostname }}:{{ gitea_port_http }}/"
     restart_policy: unless-stopped
+    memory: "{{ gitea_memory }}"
+    labels:
+      traefik.enable: "{{ gitea_available_externally }}"
+      traefik.http.routers.gitea.rule: "Host(`{{ gitea_hostname }}.{{ external_domain }}`)"
+      traefik.http.routers.gitea.tls.certresolver: "letsencrypt"
+      traefik.http.routers.gitea.tls.domains[0].main: "{{ external_domain }}"
+      traefik.http.routers.gitea.tls.domains[0].sans: "*.{{ external_domain }}"
+      traefik.http.services.gitea.loadbalancer.server.port: "3000"
