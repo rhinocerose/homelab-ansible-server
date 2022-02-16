@@ -1,51 +1,51 @@
 ---
 
-- name: Create Heimdall group
+- name: Create tandoor group
   group:
-    name: heimdall
-    gid: "{{ heimdall_gid }}"
+    name: tandoor
+    gid: "{{ tandoor_gid }}"
     state: present
 
-- name: Create Heimdall user
+- name: Create tandoor user
   user:
-    name: heimdall
-    uid: "{{ heimdall_uid }}"
+    name: tandoor
+    uid: "{{ tandoor_uid }}"
     state: present
     system: yes
     update_password: on_create
     create_home: no
-    group: heimdall
+    group: tandoor
     
-- name: Create heimdall directories
+- name: Create tandoor directories
   file:
     path: "{{ item }}"
     state: directory
-    owner: heimdall
-    group: heimdall
+    owner: tandoor
+    group: tandoor
     mode: 0755
   with_items:
-    - "{{ heimdall_config_directory }}"
+    - "{{ tandoor_config_directory }}"
 
-- name: Install heimdall Docker Container
+- name: Install tandoor Docker Container
   docker_container:
-    name: "{{ heimdall_container_name }}"
-    image: "{{ heimdall_container_store }}/{{ heimdall_container_name }}:{{ heimdall_version }}"
+    name: "{{ tandoor_container_name }}"
+    image: "{{ tandoor_container_store }}/{{ tandoor_container_name }}:{{ tandoor_version }}"
     pull: true
     volumes:
-      - "{{ heimdall_config_directory }}:/config"
+      - "{{ tandoor_config_directory }}:/config"
       - "{{ docker_app_data }}/shared:/shared"
     ports:
-      - "{{ heimdall_port_http }}:80"
-      - "{{ heimdall_port_https }}:443"
+      - "{{ tandoor_port_http }}:80"
+      - "{{ tandoor_port_https }}:443"
     env:
       TZ: "{{ system.timezone }}"
       PUID: "{{ heimdall_user_id | string }}"
       PGID: "{{ heimdall_user_id | string }}"
     restart_policy: unless-stopped
-    memory: "{{ heimdall_memory }}"
+    memory: "{{ tandoor_memory }}"
     labels:
-      traefik.enable: "{{ heimdall_available_externally }}"
-      traefik.http.routers.heimdall.rule: "Host(`{{ heimdall_hostname }}.{{ external_domain }}`)"
+      traefik.enable: "{{ tandoor_available_externally }}"
+      traefik.http.routers.heimdall.rule: "Host(`{{ tandoor_hostname }}.{{ external_domain }}`)"
       traefik.http.routers.heimdall.tls.certresolver: "letsencrypt"
       traefik.http.routers.heimdall.tls.domains[0].main: "{{ external_domain }}"
       traefik.http.routers.heimdall.tls.domains[0].sans: "*.{{ external_domain }}"
