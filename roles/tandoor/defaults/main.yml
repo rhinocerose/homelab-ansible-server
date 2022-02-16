@@ -3,7 +3,7 @@ tandoor_enabled: false
 tandoor_available_externally: false
 tandoor_container_name: tandoor
 tandoor_container_store: vabene1111
-tandoor_config_directory: "{{ docker_app_data }}/heimdall"
+tandoor_config_directory: "{{ docker_app_data }}/tandoor"
 tandoor_version: 1.0.4.1
 tandoor_port_http: 8111
 tandoor_port_https: 8112
